@@ -8,3 +8,18 @@ wheels/
 
 # Virtual environments
 .venv
+
+# 환경 변수 (민감 정보 보호)
+.env
+
+# 데이터 파일 (용량 큼)
+data/*.csv
+*.csv
+#사용자 정보
+users.json
+
+# 개인 보고서 (로컬 전용)
+REPORT.md
+# IDE
+.idea/
+.vscode/

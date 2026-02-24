@@ -1,9 +1,32 @@
 [project]
-name = "webscraping-gemini"
+name = "stock-recommender"
 version = "0.1.0"
-description = "Add your description here"
+description = "네이버 증권 투자 성향별 주식 추천 웹앱"
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 dependencies = [
+    # 웹 스크래핑
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.0",
+    "selenium>=4.15.0",
+    # 데이터 분석
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    # 시각화
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "plotly>=5.15.0",
+    # 웹앱
+    "streamlit>=1.28.0",
+    # 환경 변수
+    "python-dotenv>=1.0.0",
+    # DB (선택)
+    "pymysql>=1.1.0",
+    "sqlalchemy>=2.0.0",
+    # 기타
     "pykrx>=1.2.4",
+    "apscheduler>=3.11.2",
+    "cryptography>=46.0.5",
+    "passlib>=1.7.4",
+    "bcrypt>=5.0.0",
 ]
