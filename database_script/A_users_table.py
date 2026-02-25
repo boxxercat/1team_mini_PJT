@@ -1,25 +1,33 @@
 import pymysql
-import sqlalchemy
+import pandas as pd
+import json
+
+from sqlalchemy import create_engine, MetaData, Table
+from sqlalchemy.dialects.mysql import insert
 
 pymysql.install_as_MySQLdb()
-from sqlalchemy import create_engine
 
-engine = None
-conn = None
+with open('data/users_db.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+
+table_df = pd.DataFrame(data['users'])
+
+engine = create_engine(
+    'mysql+pymysql://test:test@25.4.53.12:3306/stock_db?charset=utf8mb4'
+)
+
+metadata = MetaData()
+metadata.reflect(bind=engine)
+user_table = Table('users', metadata, autoload_with=engine)
+
 try:
-    engine = create_engine('mysql+pymysql://python:kk@49.167.28.157:3307/python_db?charset=utf8mb4')
-    conn = engine.connect()    
+    with engine.begin() as conn:
+        for _, row in table_df.iterrows():
+            stmt = insert(user_table).values(**row.to_dict())
+            stmt = stmt.prefix_with("IGNORE")
+            conn.execute(stmt)
 
-    table_df.to_sql(name='users_table', con=engine, if_exists='replace', index=True,\
-                    index_label='id',
-                    dtype={
-                        'user_id':sqlalchemy.types.VARCHAR(200),
-                        'user_password':sqlalchemy.types.VARCHAR(200),
-                        'user_email':sqlalchemy.types.VARCHAR(200),
-                    })
-    print('유저 테이블 생성 완료')
+    print("중복 제외하고 유저 데이터 추가 완료")
+
 finally:
-    if conn is not None: 
-        conn.close()
-    if engine is not None:
-        engine.dispose()
+    engine.dispose()

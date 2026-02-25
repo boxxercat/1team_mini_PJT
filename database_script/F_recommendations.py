@@ -10,17 +10,17 @@ try:
     engine = create_engine('mysql+pymysql://python:python@127.0.0.1:3306/python_db?charset=utf8mb4')
     conn = engine.connect()    
 
-    table_df.to_sql(name='stocks', con=engine, if_exists='replace', index=True,\
-                    index_label='D_id',
+    table_df.to_sql(name='analysis_signals', con=engine, if_exists='replace', index=True,\
+                    index_label='F_id',
                     dtype={
                         'id':sqlalchemy.types.VARCHAR(200),
+                        'user_id':sqlalchemy.types.VARCHAR(200),
                         'ticker':sqlalchemy.types.VARCHAR(200),
-                        'captured_at':sqlalchemy.types.VARCHAR(200),
-                        'price':sqlalchemy.types.VARCHAR(200),
-                        'volume':sqlalchemy.types.VARCHAR(200),
-                        'trade_value':sqlalchemy.types.VARCHAR(200),
+                        'was_of':sqlalchemy.types.VARCHAR(200),
+                        'score':sqlalchemy.types.VARCHAR(200),
+                        'reason':sqlalchemy.types.VARCHAR(200),
                     })
-    print('주식 테이블 생성 완료')
+    print('추천 테이블 생성 완료')
 finally:
     if conn is not None: 
         conn.close()
