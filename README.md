@@ -59,13 +59,10 @@ miniproject_1/
 # 1. 의존성 설치
 uv sync
 
-# 2. 데이터 수집 (최초 1회)
-uv run python scraper.py
-
-# 3. Streamlit 앱 실행
+# 2. Streamlit 앱 실행
 uv run streamlit run app.py
 
-# 4. 자동 수집 스케줄러 실행 (별도 터미널)
+# 3. 자동 수집 스케줄러 실행 (별도 터미널)
 uv run python scheduler_job.py
 ```
 
