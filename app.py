@@ -151,6 +151,17 @@ st.markdown("""
         color: #dcb98c !important;
         font-weight: 600 !important;
     }
+    /* 한국 시장 metric delta: 상승=빨강, 하락=파랑 덮어씌움 (color만 변경, fill은 건드리지 않아 화살표 유지) */
+    /* 하락(Down) → 파랑 */
+    [data-testid="stMetricDelta"]:has([data-testid="stMetricDeltaIcon-Down"]),
+    [data-testid="stMetricDelta"]:has([data-testid="stMetricDeltaIcon-Down"]) * {
+        color: #3b82f6 !important;
+    }
+    /* 상승(Up) → 빨강 */
+    [data-testid="stMetricDelta"]:has([data-testid="stMetricDeltaIcon-Up"]),
+    [data-testid="stMetricDelta"]:has([data-testid="stMetricDeltaIcon-Up"]) * {
+        color: #f85149 !important;
+    }
 
     /* 헤더 */
     h1 {
@@ -745,7 +756,7 @@ elif page == "🏠 메인 대시보드":
                     label=row.종목명, 
                     value=price, 
                     delta=change,
-                    delta_color="normal"
+                    delta_color="inverse"
                 )
     else:
         st.info("수집된 데이터가 없습니다.")
@@ -761,9 +772,9 @@ elif page == "🏠 메인 대시보드":
     with col1:
         st.metric("📈 총 종목 수", summary.get('총 종목 수', 0))
     with col2:
-        st.metric("🟢 상승", summary.get('상승 종목 수', 0))
+        st.metric("🔴 상승", summary.get('상승 종목 수', 0))
     with col3:
-        st.metric("🔴 하락", summary.get('하락 종목 수', 0))
+        st.metric("🔵 하락", summary.get('하락 종목 수', 0))
     with col4:
         avg_pct = summary.get('평균 등락률(%)', 0)
         st.metric("📊 평균 등락률", f"{avg_pct}%")
@@ -868,7 +879,7 @@ elif page == "🏠 메인 대시보드":
                 names='구분',
                 hole=0.5,
                 color='구분',
-                color_discrete_map={'상승 종목': '#f85149', '하락 종목': '#3fb950', '보합': '#8b949e'}, # 상승 빨강, 하락 초록(해외 기준/취향따라 변경)
+                color_discrete_map={'상승 종목': '#f85149', '하락 종목': '#3b82f6', '보합': '#8b949e'},  # 한국 시장: 상승=빨강, 하락=파랑
                 title=f"🔥 {market_filter} 거래량 수급 비중 (상승 vs 하락)"
             )
             
@@ -1292,7 +1303,8 @@ elif page == "⭐ 맞춤 종목 추천":
             with col:
                 medals = ['🥇', '🥈', '🥉']
                 medal = medals[i] if i < 3 else ''
-                change_color = '#3fb950' if row.get('전일비', 0) > 0 else '#f85149'
+                # 한국 시장: 상승=빨강, 하락=파랑
+                change_color = '#f85149' if row.get('전일비', 0) > 0 else '#3b82f6'
                 st.markdown(
                     f"""
                     <div class="stock-card">
@@ -1363,7 +1375,7 @@ elif page == "⭐ 맞춤 종목 추천":
 
             macd_txt = "-"
             if macd_hist is not None:
-                mc = '#3fb950' if macd_hist > 0 else '#f85149'
+                mc = '#f85149' if macd_hist > 0 else '#3b82f6'  # 한국 시장: 상승=빨강, 하락=파랑
                 ml = '▲상승' if macd_hist > 0 else '▼하락'
                 macd_txt = f"<span style='color:{mc}'>{ml}</span>"
 
@@ -1542,7 +1554,7 @@ elif page == "⭐ 맞춤 종목 추천":
                 x='종목명',
                 y='등락률(숫자)',
                 color='등락률(숫자)',
-                color_continuous_scale='RdYlGn',
+                color_continuous_scale='RdBu',  # 한국 시장: 상승=빨강, 하락=파랑
                 color_continuous_midpoint=0,
                 title='추천 종목 등락률',
                 template='plotly_dark',
