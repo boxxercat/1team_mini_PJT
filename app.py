@@ -724,6 +724,7 @@ with st.sidebar:
         st.markdown("<br>", unsafe_allow_html=True)
         if st.button("📝 회원가입 하기", use_container_width=True):
             st.session_state['current_page'] = "📝 회원가입"
+            st.session_state['_from_signup_btn'] = True # 메뉴 덮어쓰기 1회 방지
             if 'menu_radio' in st.session_state:
                 del st.session_state['menu_radio']
             st.rerun()
@@ -784,7 +785,10 @@ with st.sidebar:
         )
 
         # 페이지 전환 로직
-        if st.session_state['current_page'] != selected:
+        # - 회원가입 버튼 직후 1회: 옵션메뉴 기본값으로 덮어쓰지 않음
+        # - 그 외: 사용자가 메뉴 클릭 시 해당 페이지로 전환
+        skip_overwrite = st.session_state.pop('_from_signup_btn', False)
+        if not skip_overwrite and st.session_state['current_page'] != selected:
             st.session_state['current_page'] = selected
             st.rerun()
 
