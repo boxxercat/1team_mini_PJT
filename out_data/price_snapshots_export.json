@@ -1471,6 +1471,1606 @@
             "price": 17850,
             "volume": 2382710,
             "trade_value": 44168
+        },
+        {
+            "id": 201,
+            "ticker": "252670",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 246,
+            "volume": -1958396338,
+            "trade_value": 580080
+        },
+        {
+            "id": 202,
+            "ticker": "001510",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 2245,
+            "volume": 259234283,
+            "trade_value": 556513
+        },
+        {
+            "id": 203,
+            "ticker": "114800",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1562,
+            "volume": 181009118,
+            "trade_value": 284251
+        },
+        {
+            "id": 204,
+            "ticker": "003530",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 8710,
+            "volume": 44034729,
+            "trade_value": 398324
+        },
+        {
+            "id": 205,
+            "ticker": "007460",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 469,
+            "volume": 41067645,
+            "trade_value": 20259
+        },
+        {
+            "id": 206,
+            "ticker": "462330",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 2345,
+            "volume": 37993839,
+            "trade_value": 89559
+        },
+        {
+            "id": 207,
+            "ticker": "092220",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1239,
+            "volume": 37878742,
+            "trade_value": 48396
+        },
+        {
+            "id": 208,
+            "ticker": "047040",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 9790,
+            "volume": 32436826,
+            "trade_value": 306541
+        },
+        {
+            "id": 209,
+            "ticker": "018880",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 4705,
+            "volume": 31883645,
+            "trade_value": 150565
+        },
+        {
+            "id": 210,
+            "ticker": "233740",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 19090,
+            "volume": 30297850,
+            "trade_value": 573488
+        },
+        {
+            "id": 211,
+            "ticker": "530036",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 67,
+            "volume": 29268929,
+            "trade_value": 1963
+        },
+        {
+            "id": 212,
+            "ticker": "001290",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1558,
+            "volume": 23652116,
+            "trade_value": 34605
+        },
+        {
+            "id": 213,
+            "ticker": "251340",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 2130,
+            "volume": 21195711,
+            "trade_value": 45331
+        },
+        {
+            "id": 214,
+            "ticker": "252710",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 262,
+            "volume": 20932842,
+            "trade_value": 5529
+        },
+        {
+            "id": 215,
+            "ticker": "229200",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 20345,
+            "volume": 19105678,
+            "trade_value": 386871
+        },
+        {
+            "id": 216,
+            "ticker": "001200",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 5570,
+            "volume": 18682348,
+            "trade_value": 110118
+        },
+        {
+            "id": 217,
+            "ticker": "004060",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 703,
+            "volume": 17605348,
+            "trade_value": 12515
+        },
+        {
+            "id": 218,
+            "ticker": "396500",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 33500,
+            "volume": 17130583,
+            "trade_value": 568901
+        },
+        {
+            "id": 219,
+            "ticker": "088350",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 5080,
+            "volume": 15988255,
+            "trade_value": 81536
+        },
+        {
+            "id": 220,
+            "ticker": "015260",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 656,
+            "volume": 14331249,
+            "trade_value": 9385
+        },
+        {
+            "id": 221,
+            "ticker": "005930",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 214250,
+            "volume": 14196344,
+            "trade_value": 3019625
+        },
+        {
+            "id": 222,
+            "ticker": "004410",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 252,
+            "volume": 13911909,
+            "trade_value": 3572
+        },
+        {
+            "id": 223,
+            "ticker": "122630",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 109130,
+            "volume": 13877777,
+            "trade_value": 1500254
+        },
+        {
+            "id": 224,
+            "ticker": "003460",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 4385,
+            "volume": 12946491,
+            "trade_value": 58981
+        },
+        {
+            "id": 225,
+            "ticker": "011930",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 2105,
+            "volume": 12050898,
+            "trade_value": 26396
+        },
+        {
+            "id": 226,
+            "ticker": "069500",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 93190,
+            "volume": 10630396,
+            "trade_value": 985751
+        },
+        {
+            "id": 227,
+            "ticker": "0148J0",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 14960,
+            "volume": 10334232,
+            "trade_value": 154212
+        },
+        {
+            "id": 228,
+            "ticker": "006340",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 6230,
+            "volume": 10001315,
+            "trade_value": 62456
+        },
+        {
+            "id": 229,
+            "ticker": "009310",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1422,
+            "volume": 9568969,
+            "trade_value": 14230
+        },
+        {
+            "id": 230,
+            "ticker": "152550",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 244,
+            "volume": 9503796,
+            "trade_value": 2343
+        },
+        {
+            "id": 231,
+            "ticker": "452260",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 3195,
+            "volume": 8344723,
+            "trade_value": 26855
+        },
+        {
+            "id": 232,
+            "ticker": "001440",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 35950,
+            "volume": 8198517,
+            "trade_value": 292973
+        },
+        {
+            "id": 233,
+            "ticker": "379800",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 22320,
+            "volume": 7968974,
+            "trade_value": 178244
+        },
+        {
+            "id": 234,
+            "ticker": "0162Z0",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 10545,
+            "volume": 7853592,
+            "trade_value": 82593
+        },
+        {
+            "id": 235,
+            "ticker": "034220",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 15480,
+            "volume": 7307882,
+            "trade_value": 111250
+        },
+        {
+            "id": 236,
+            "ticker": "498400",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 19610,
+            "volume": 7238240,
+            "trade_value": 141341
+        },
+        {
+            "id": 237,
+            "ticker": "144600",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 14880,
+            "volume": 7160796,
+            "trade_value": 106214
+        },
+        {
+            "id": 238,
+            "ticker": "412570",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 2085,
+            "volume": 6895166,
+            "trade_value": 14451
+        },
+        {
+            "id": 239,
+            "ticker": "530107",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1776,
+            "volume": 6583848,
+            "trade_value": 11785
+        },
+        {
+            "id": 240,
+            "ticker": "035720",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 61800,
+            "volume": 6553817,
+            "trade_value": 397364
+        },
+        {
+            "id": 241,
+            "ticker": "360750",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 24415,
+            "volume": 6502599,
+            "trade_value": 159233
+        },
+        {
+            "id": 242,
+            "ticker": "102970",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 29405,
+            "volume": 5577809,
+            "trade_value": 164217
+        },
+        {
+            "id": 243,
+            "ticker": "305720",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 19165,
+            "volume": 5467469,
+            "trade_value": 105042
+        },
+        {
+            "id": 244,
+            "ticker": "0117V0",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 18900,
+            "volume": 5117440,
+            "trade_value": 95209
+        },
+        {
+            "id": 245,
+            "ticker": "462010",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 7675,
+            "volume": 5047264,
+            "trade_value": 38960
+        },
+        {
+            "id": 246,
+            "ticker": "395160",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 27740,
+            "volume": 5030167,
+            "trade_value": 138327
+        },
+        {
+            "id": 247,
+            "ticker": "487240",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 35510,
+            "volume": 4859013,
+            "trade_value": 169822
+        },
+        {
+            "id": 248,
+            "ticker": "012200",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 8350,
+            "volume": 4669794,
+            "trade_value": 41070
+        },
+        {
+            "id": 249,
+            "ticker": "329200",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 4625,
+            "volume": 4553437,
+            "trade_value": 21048
+        },
+        {
+            "id": 250,
+            "ticker": "0091P0",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 19720,
+            "volume": 4407434,
+            "trade_value": 86189
+        },
+        {
+            "id": 251,
+            "ticker": "232080",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 20755,
+            "volume": 4240744,
+            "trade_value": 87595
+        },
+        {
+            "id": 252,
+            "ticker": "000400",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 2470,
+            "volume": 4224204,
+            "trade_value": 10596
+        },
+        {
+            "id": 253,
+            "ticker": "003470",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 5430,
+            "volume": 4147413,
+            "trade_value": 23073
+        },
+        {
+            "id": 254,
+            "ticker": "530062",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 33,
+            "volume": 3803879,
+            "trade_value": 128
+        },
+        {
+            "id": 255,
+            "ticker": "448330",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 15955,
+            "volume": 3785391,
+            "trade_value": 60226
+        },
+        {
+            "id": 256,
+            "ticker": "228790",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 3775,
+            "volume": 3765733,
+            "trade_value": 14159
+        },
+        {
+            "id": 257,
+            "ticker": "069460",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 617,
+            "volume": 3721826,
+            "trade_value": 2325
+        },
+        {
+            "id": 258,
+            "ticker": "488080",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 46330,
+            "volume": 3694259,
+            "trade_value": 168804
+        },
+        {
+            "id": 259,
+            "ticker": "001500",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 13260,
+            "volume": 3658989,
+            "trade_value": 49918
+        },
+        {
+            "id": 260,
+            "ticker": "455850",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 24570,
+            "volume": 3533908,
+            "trade_value": 85899
+        },
+        {
+            "id": 261,
+            "ticker": "005935",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 148100,
+            "volume": 3523333,
+            "trade_value": 517117
+        },
+        {
+            "id": 262,
+            "ticker": "292150",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 33690,
+            "volume": 3503084,
+            "trade_value": 117523
+        },
+        {
+            "id": 263,
+            "ticker": "495050",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 27310,
+            "volume": 3388775,
+            "trade_value": 92047
+        },
+        {
+            "id": 264,
+            "ticker": "003280",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1826,
+            "volume": 3339390,
+            "trade_value": 6193
+        },
+        {
+            "id": 265,
+            "ticker": "118000",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 356,
+            "volume": 3330552,
+            "trade_value": 1202
+        },
+        {
+            "id": 266,
+            "ticker": "066570",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 147700,
+            "volume": 3239868,
+            "trade_value": 470419
+        },
+        {
+            "id": 267,
+            "ticker": "445290",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 38160,
+            "volume": 3186079,
+            "trade_value": 120613
+        },
+        {
+            "id": 268,
+            "ticker": "395270",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 35630,
+            "volume": 3167238,
+            "trade_value": 111920
+        },
+        {
+            "id": 269,
+            "ticker": "469070",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 17880,
+            "volume": 3020041,
+            "trade_value": 53870
+        },
+        {
+            "id": 270,
+            "ticker": "494310",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 73990,
+            "volume": 2990020,
+            "trade_value": 218191
+        },
+        {
+            "id": 271,
+            "ticker": "091160",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 100440,
+            "volume": 2982658,
+            "trade_value": 297245
+        },
+        {
+            "id": 272,
+            "ticker": "520055",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1395,
+            "volume": 2966690,
+            "trade_value": 4193
+        },
+        {
+            "id": 273,
+            "ticker": "034830",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1661,
+            "volume": 2884241,
+            "trade_value": 4775
+        },
+        {
+            "id": 274,
+            "ticker": "006800",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 72100,
+            "volume": 2837609,
+            "trade_value": 204216
+        },
+        {
+            "id": 275,
+            "ticker": "379810",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 23790,
+            "volume": 2815967,
+            "trade_value": 67163
+        },
+        {
+            "id": 276,
+            "ticker": "157500",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 20160,
+            "volume": 2678924,
+            "trade_value": 53964
+        },
+        {
+            "id": 277,
+            "ticker": "123310",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1745,
+            "volume": 2610617,
+            "trade_value": 4588
+        },
+        {
+            "id": 278,
+            "ticker": "472150",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 18890,
+            "volume": 2520776,
+            "trade_value": 47436
+        },
+        {
+            "id": 279,
+            "ticker": "005880",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 2195,
+            "volume": 2481455,
+            "trade_value": 5470
+        },
+        {
+            "id": 280,
+            "ticker": "003060",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 364,
+            "volume": 2451010,
+            "trade_value": 906
+        },
+        {
+            "id": 281,
+            "ticker": "364980",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 11710,
+            "volume": 2434909,
+            "trade_value": 28561
+        },
+        {
+            "id": 282,
+            "ticker": "530105",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1400,
+            "volume": 2394771,
+            "trade_value": 3384
+        },
+        {
+            "id": 283,
+            "ticker": "102110",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 93155,
+            "volume": 2354092,
+            "trade_value": 218338
+        },
+        {
+            "id": 284,
+            "ticker": "006740",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 633,
+            "volume": 2305892,
+            "trade_value": 1423
+        },
+        {
+            "id": 285,
+            "ticker": "042700",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 242500,
+            "volume": 2282720,
+            "trade_value": 550333
+        },
+        {
+            "id": 286,
+            "ticker": "377300",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 70700,
+            "volume": 2232662,
+            "trade_value": 156988
+        },
+        {
+            "id": 287,
+            "ticker": "003490",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 28300,
+            "volume": 2180086,
+            "trade_value": 61427
+        },
+        {
+            "id": 288,
+            "ticker": "000660",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1041000,
+            "volume": 2167117,
+            "trade_value": 2246512
+        },
+        {
+            "id": 289,
+            "ticker": "012030",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 2187,
+            "volume": 2154561,
+            "trade_value": 4521
+        },
+        {
+            "id": 290,
+            "ticker": "010140",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 28600,
+            "volume": 2122067,
+            "trade_value": 60601
+        },
+        {
+            "id": 291,
+            "ticker": "0005D0",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 19940,
+            "volume": 2107454,
+            "trade_value": 41992
+        },
+        {
+            "id": 292,
+            "ticker": "475720",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 13680,
+            "volume": 2093025,
+            "trade_value": 28594
+        },
+        {
+            "id": 293,
+            "ticker": "003620",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 4220,
+            "volume": 2023466,
+            "trade_value": 8511
+        },
+        {
+            "id": 294,
+            "ticker": "034020",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 103600,
+            "volume": 1882337,
+            "trade_value": 194940
+        },
+        {
+            "id": 295,
+            "ticker": "0098F0",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 19290,
+            "volume": 1878603,
+            "trade_value": 36024
+        },
+        {
+            "id": 296,
+            "ticker": "000370",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 7970,
+            "volume": 1867987,
+            "trade_value": 14885
+        },
+        {
+            "id": 297,
+            "ticker": "411060",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 33160,
+            "volume": 1838693,
+            "trade_value": 61053
+        },
+        {
+            "id": 298,
+            "ticker": "348950",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 1928,
+            "volume": 1807172,
+            "trade_value": 3544
+        },
+        {
+            "id": 299,
+            "ticker": "011200",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 22350,
+            "volume": 1767750,
+            "trade_value": 39755
+        },
+        {
+            "id": 300,
+            "ticker": "009290",
+            "captured_at": "2026-02-26 11:14:14",
+            "price": 9590,
+            "volume": 1757748,
+            "trade_value": 16887
+        },
+        {
+            "id": 301,
+            "ticker": "012860",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 5280,
+            "volume": 38514880,
+            "trade_value": 197181
+        },
+        {
+            "id": 302,
+            "ticker": "049630",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4770,
+            "volume": 30249086,
+            "trade_value": 150130
+        },
+        {
+            "id": 303,
+            "ticker": "053950",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 893,
+            "volume": 29307334,
+            "trade_value": 27346
+        },
+        {
+            "id": 304,
+            "ticker": "038880",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 158,
+            "volume": 20001317,
+            "trade_value": 3157
+        },
+        {
+            "id": 305,
+            "ticker": "900300",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 124,
+            "volume": 16338422,
+            "trade_value": 2193
+        },
+        {
+            "id": 306,
+            "ticker": "187660",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 19490,
+            "volume": 13326642,
+            "trade_value": 257248
+        },
+        {
+            "id": 307,
+            "ticker": "242040",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 5920,
+            "volume": 12381866,
+            "trade_value": 71311
+        },
+        {
+            "id": 308,
+            "ticker": "229000",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4057,
+            "volume": 12176467,
+            "trade_value": 51632
+        },
+        {
+            "id": 309,
+            "ticker": "308080",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 8850,
+            "volume": 9882397,
+            "trade_value": 92828
+        },
+        {
+            "id": 310,
+            "ticker": "054220",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 841,
+            "volume": 9417994,
+            "trade_value": 8212
+        },
+        {
+            "id": 311,
+            "ticker": "377030",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 1222,
+            "volume": 8934005,
+            "trade_value": 12144
+        },
+        {
+            "id": 312,
+            "ticker": "092040",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 1420,
+            "volume": 8707080,
+            "trade_value": 11972
+        },
+        {
+            "id": 313,
+            "ticker": "036540",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 7590,
+            "volume": 8663695,
+            "trade_value": 65513
+        },
+        {
+            "id": 314,
+            "ticker": "046890",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 13420,
+            "volume": 8467609,
+            "trade_value": 117707
+        },
+        {
+            "id": 315,
+            "ticker": "064260",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 8830,
+            "volume": 8215461,
+            "trade_value": 74171
+        },
+        {
+            "id": 316,
+            "ticker": "076610",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 1459,
+            "volume": 7859917,
+            "trade_value": 10958
+        },
+        {
+            "id": 317,
+            "ticker": "125020",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 6140,
+            "volume": 7331302,
+            "trade_value": 47239
+        },
+        {
+            "id": 318,
+            "ticker": "010170",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4210,
+            "volume": 7215456,
+            "trade_value": 30313
+        },
+        {
+            "id": 319,
+            "ticker": "225190",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 2545,
+            "volume": 6807462,
+            "trade_value": 17775
+        },
+        {
+            "id": 320,
+            "ticker": "032820",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 16680,
+            "volume": 6749841,
+            "trade_value": 113528
+        },
+        {
+            "id": 321,
+            "ticker": "080220",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 46350,
+            "volume": 6711295,
+            "trade_value": 309939
+        },
+        {
+            "id": 322,
+            "ticker": "048410",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 17810,
+            "volume": 6075492,
+            "trade_value": 114494
+        },
+        {
+            "id": 323,
+            "ticker": "038530",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 399,
+            "volume": 6055302,
+            "trade_value": 2482
+        },
+        {
+            "id": 324,
+            "ticker": "115480",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 603,
+            "volume": 5733460,
+            "trade_value": 3514
+        },
+        {
+            "id": 325,
+            "ticker": "307180",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 8970,
+            "volume": 5400175,
+            "trade_value": 46037
+        },
+        {
+            "id": 326,
+            "ticker": "008290",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 385,
+            "volume": 5373187,
+            "trade_value": 2250
+        },
+        {
+            "id": 327,
+            "ticker": "065170",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4705,
+            "volume": 5245598,
+            "trade_value": 25490
+        },
+        {
+            "id": 328,
+            "ticker": "234340",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 27125,
+            "volume": 5132738,
+            "trade_value": 141126
+        },
+        {
+            "id": 329,
+            "ticker": "221800",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 30750,
+            "volume": 4837503,
+            "trade_value": 140346
+        },
+        {
+            "id": 330,
+            "ticker": "090710",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 14880,
+            "volume": 4671338,
+            "trade_value": 70013
+        },
+        {
+            "id": 331,
+            "ticker": "317240",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 398,
+            "volume": 4580768,
+            "trade_value": 1875
+        },
+        {
+            "id": 332,
+            "ticker": "101330",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 6520,
+            "volume": 4577294,
+            "trade_value": 29861
+        },
+        {
+            "id": 333,
+            "ticker": "115530",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 304,
+            "volume": 4432880,
+            "trade_value": 1411
+        },
+        {
+            "id": 334,
+            "ticker": "006910",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 11200,
+            "volume": 4272362,
+            "trade_value": 49496
+        },
+        {
+            "id": 335,
+            "ticker": "255220",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 2940,
+            "volume": 4264886,
+            "trade_value": 12301
+        },
+        {
+            "id": 336,
+            "ticker": "024060",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 19950,
+            "volume": 4250200,
+            "trade_value": 88108
+        },
+        {
+            "id": 337,
+            "ticker": "288330",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 866,
+            "volume": 4043707,
+            "trade_value": 3479
+        },
+        {
+            "id": 338,
+            "ticker": "019550",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 771,
+            "volume": 3973258,
+            "trade_value": 3165
+        },
+        {
+            "id": 339,
+            "ticker": "380540",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4250,
+            "volume": 3717966,
+            "trade_value": 15692
+        },
+        {
+            "id": 340,
+            "ticker": "033340",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 1998,
+            "volume": 3656303,
+            "trade_value": 7441
+        },
+        {
+            "id": 341,
+            "ticker": "123040",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 2815,
+            "volume": 3641027,
+            "trade_value": 10630
+        },
+        {
+            "id": 342,
+            "ticker": "038060",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 739,
+            "volume": 3578755,
+            "trade_value": 2697
+        },
+        {
+            "id": 343,
+            "ticker": "227950",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 601,
+            "volume": 3552023,
+            "trade_value": 2135
+        },
+        {
+            "id": 344,
+            "ticker": "403870",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 43100,
+            "volume": 3365143,
+            "trade_value": 142800
+        },
+        {
+            "id": 345,
+            "ticker": "083640",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 473,
+            "volume": 3347768,
+            "trade_value": 1601
+        },
+        {
+            "id": 346,
+            "ticker": "078860",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 455,
+            "volume": 3342968,
+            "trade_value": 1578
+        },
+        {
+            "id": 347,
+            "ticker": "017510",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 12000,
+            "volume": 3195982,
+            "trade_value": 38506
+        },
+        {
+            "id": 348,
+            "ticker": "049470",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 690,
+            "volume": 3169223,
+            "trade_value": 2294
+        },
+        {
+            "id": 349,
+            "ticker": "092190",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4395,
+            "volume": 3105469,
+            "trade_value": 14781
+        },
+        {
+            "id": 350,
+            "ticker": "060250",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 22150,
+            "volume": 3027557,
+            "trade_value": 68741
+        },
+        {
+            "id": 351,
+            "ticker": "270520",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 222,
+            "volume": 3023345,
+            "trade_value": 679
+        },
+        {
+            "id": 352,
+            "ticker": "060900",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 299,
+            "volume": 2998417,
+            "trade_value": 853
+        },
+        {
+            "id": 353,
+            "ticker": "008830",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 24750,
+            "volume": 2961123,
+            "trade_value": 75079
+        },
+        {
+            "id": 354,
+            "ticker": "078020",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 8310,
+            "volume": 2937127,
+            "trade_value": 25066
+        },
+        {
+            "id": 355,
+            "ticker": "056090",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 2685,
+            "volume": 2888755,
+            "trade_value": 7581
+        },
+        {
+            "id": 356,
+            "ticker": "048530",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4615,
+            "volume": 2830655,
+            "trade_value": 12197
+        },
+        {
+            "id": 357,
+            "ticker": "204610",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 2180,
+            "volume": 2826421,
+            "trade_value": 6185
+        },
+        {
+            "id": 358,
+            "ticker": "060720",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 18060,
+            "volume": 2816382,
+            "trade_value": 52057
+        },
+        {
+            "id": 359,
+            "ticker": "049080",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 474,
+            "volume": 2797448,
+            "trade_value": 1358
+        },
+        {
+            "id": 360,
+            "ticker": "016600",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 371,
+            "volume": 2785531,
+            "trade_value": 1049
+        },
+        {
+            "id": 361,
+            "ticker": "357880",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 2610,
+            "volume": 2754165,
+            "trade_value": 7350
+        },
+        {
+            "id": 362,
+            "ticker": "023440",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 686,
+            "volume": 2731001,
+            "trade_value": 1826
+        },
+        {
+            "id": 363,
+            "ticker": "013720",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 750,
+            "volume": 2717339,
+            "trade_value": 2072
+        },
+        {
+            "id": 364,
+            "ticker": "039860",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 7090,
+            "volume": 2655448,
+            "trade_value": 19526
+        },
+        {
+            "id": 365,
+            "ticker": "440320",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4235,
+            "volume": 2596142,
+            "trade_value": 11157
+        },
+        {
+            "id": 366,
+            "ticker": "067390",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 901,
+            "volume": 2438917,
+            "trade_value": 2199
+        },
+        {
+            "id": 367,
+            "ticker": "018000",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 1324,
+            "volume": 2417328,
+            "trade_value": 3207
+        },
+        {
+            "id": 368,
+            "ticker": "222080",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 14030,
+            "volume": 2410724,
+            "trade_value": 34059
+        },
+        {
+            "id": 369,
+            "ticker": "330350",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 10930,
+            "volume": 2360347,
+            "trade_value": 26605
+        },
+        {
+            "id": 370,
+            "ticker": "069540",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 1135,
+            "volume": 2340107,
+            "trade_value": 2671
+        },
+        {
+            "id": 371,
+            "ticker": "024840",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 2425,
+            "volume": 2218245,
+            "trade_value": 5526
+        },
+        {
+            "id": 372,
+            "ticker": "178320",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 39050,
+            "volume": 2173927,
+            "trade_value": 84239
+        },
+        {
+            "id": 373,
+            "ticker": "246690",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 1971,
+            "volume": 2162240,
+            "trade_value": 4385
+        },
+        {
+            "id": 374,
+            "ticker": "339950",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 2555,
+            "volume": 2131802,
+            "trade_value": 5392
+        },
+        {
+            "id": 375,
+            "ticker": "047770",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4900,
+            "volume": 2128639,
+            "trade_value": 10570
+        },
+        {
+            "id": 376,
+            "ticker": "086520",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 178900,
+            "volume": 2080990,
+            "trade_value": 373525
+        },
+        {
+            "id": 377,
+            "ticker": "340930",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 1213,
+            "volume": 2026740,
+            "trade_value": 2493
+        },
+        {
+            "id": 378,
+            "ticker": "025980",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 8110,
+            "volume": 2023039,
+            "trade_value": 16616
+        },
+        {
+            "id": 379,
+            "ticker": "046120",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 6050,
+            "volume": 1961164,
+            "trade_value": 12051
+        },
+        {
+            "id": 380,
+            "ticker": "032680",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 296,
+            "volume": 1827757,
+            "trade_value": 542
+        },
+        {
+            "id": 381,
+            "ticker": "319400",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 34300,
+            "volume": 1826702,
+            "trade_value": 65954
+        },
+        {
+            "id": 382,
+            "ticker": "072470",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4325,
+            "volume": 1772233,
+            "trade_value": 7794
+        },
+        {
+            "id": 383,
+            "ticker": "241520",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 18540,
+            "volume": 1767914,
+            "trade_value": 33030
+        },
+        {
+            "id": 384,
+            "ticker": "038500",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 15620,
+            "volume": 1709163,
+            "trade_value": 26966
+        },
+        {
+            "id": 385,
+            "ticker": "462860",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4370,
+            "volume": 1694765,
+            "trade_value": 7557
+        },
+        {
+            "id": 386,
+            "ticker": "476060",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 23050,
+            "volume": 1669014,
+            "trade_value": 39635
+        },
+        {
+            "id": 387,
+            "ticker": "003380",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 15830,
+            "volume": 1661577,
+            "trade_value": 26642
+        },
+        {
+            "id": 388,
+            "ticker": "273060",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 1271,
+            "volume": 1660720,
+            "trade_value": 2212
+        },
+        {
+            "id": 389,
+            "ticker": "321370",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 2405,
+            "volume": 1646174,
+            "trade_value": 3974
+        },
+        {
+            "id": 390,
+            "ticker": "302550",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 3370,
+            "volume": 1604528,
+            "trade_value": 5548
+        },
+        {
+            "id": 391,
+            "ticker": "417200",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 17580,
+            "volume": 1597006,
+            "trade_value": 28602
+        },
+        {
+            "id": 392,
+            "ticker": "045390",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 4550,
+            "volume": 1533378,
+            "trade_value": 7055
+        },
+        {
+            "id": 393,
+            "ticker": "253590",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 17580,
+            "volume": 1521010,
+            "trade_value": 27450
+        },
+        {
+            "id": 394,
+            "ticker": "019570",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 409,
+            "volume": 1493874,
+            "trade_value": 627
+        },
+        {
+            "id": 395,
+            "ticker": "089150",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 2685,
+            "volume": 1470872,
+            "trade_value": 4207
+        },
+        {
+            "id": 396,
+            "ticker": "267320",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 3790,
+            "volume": 1426875,
+            "trade_value": 5452
+        },
+        {
+            "id": 397,
+            "ticker": "088130",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 10760,
+            "volume": 1418763,
+            "trade_value": 14650
+        },
+        {
+            "id": 398,
+            "ticker": "238120",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 5290,
+            "volume": 1415463,
+            "trade_value": 7592
+        },
+        {
+            "id": 399,
+            "ticker": "050090",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 718,
+            "volume": 1391413,
+            "trade_value": 1050
+        },
+        {
+            "id": 400,
+            "ticker": "313760",
+            "captured_at": "2026-02-26 11:14:15",
+            "price": 532,
+            "volume": 1389397,
+            "trade_value": 758
         }
     ]
 }
