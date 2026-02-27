@@ -63,6 +63,12 @@ CREATE TABLE IF NOT EXISTS price_snapshots (
                   COMMENT '거래량',
     trade_value   BIGINT      NOT NULL DEFAULT 0
                   COMMENT '거래대금',
+    change_val    BIGINT      DEFAULT 0
+                  COMMENT '전일비',
+    change_rate   VARCHAR(20) DEFAULT '0.00%'
+                  COMMENT '등락률 문자열',
+    change_rate_num FLOAT     DEFAULT 0.0
+                  COMMENT '등락률 숫자형',
     UNIQUE KEY uq_snapshot (ticker, captured_at),
     FOREIGN KEY (ticker) REFERENCES stocks(ticker)
         ON DELETE CASCADE

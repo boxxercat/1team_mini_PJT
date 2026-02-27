@@ -739,11 +739,49 @@ def save_all_to_csv(stock_df, signals_df=None, recs_df=None, newsletter_dict=Non
 
     # (5) newsletters.csv
     if newsletter_dict:
-        news_df = pd.DataFrame([newsletter_dict])
-        if 'id' not in news_df.columns: news_df.insert(0, 'id', [101])
+        if isinstance(newsletter_dict, list):
+            news_df = pd.DataFrame(newsletter_dict)
+        else:
+            news_df = pd.DataFrame([newsletter_dict])
+            
+        # 사용자 요청 형식에 맞춰 컬럼 순서 조정
+        cols = ["user_id", "type_id", "created_at", "title", "content"]
+        # 존재하지 않는 컬럼이 있을 경우 대비 (안전장치)
+        news_df = news_df[[c for c in cols if c in news_df.columns]]
+            
         if pd.api.types.is_datetime64_any_dtype(news_df['created_at']):
             news_df['created_at'] = news_df['created_at'].dt.strftime('%Y-%m-%dT%H:%M:%S')
         _write_csv(news_df, f"newsletters_{today}.csv")
+
+def cleanup_old_files(data_dir='data'):
+    """당일 데이터와 코어 DB를 제외한 구식 파일을 삭제합니다."""
+    import os
+    from datetime import datetime
+    
+    today_str = datetime.now().strftime("%Y%m%d")
+    keep_list = ['users_db.json', 'user_type_db.json', 'users_db.csv', 'user_type_db.csv']
+    
+    if not os.path.exists(data_dir):
+        return
+        
+    logger.info(f"[Cleanup] '{data_dir}' 폴더 정리 중...")
+    count = 0
+    for f in os.listdir(data_dir):
+        fpath = os.path.join(data_dir, f)
+        if not os.path.isfile(fpath):
+            continue
+            
+        # 유지 조건: 코어 DB 파일이거나 파일명에 오늘 날짜 포함
+        if f in keep_list or today_str in f:
+            continue
+            
+        try:
+            os.remove(fpath)
+            count += 1
+        except Exception as e:
+            logger.warning(f"  FAILED to delete {f}: {e}")
+            
+    logger.info(f"[Cleanup] 총 {count}개의 구식 파일이 삭제되었습니다.")
 
 # ============================================================
 # 7. 전체 파이프라인 실행 함수
@@ -820,21 +858,50 @@ def run_full_pipeline(kospi_limit=100, kosdaq_limit=100):
     logger.info("[분석] 분석 신호 생성 중...")
     signals_df = generate_analysis_signals(final_df, window='1D')
 
-    # ─── STEP 7: (F) 추천 데이터 생성 (기본: 위험중립형) ───
-    logger.info("[추천] 기본 추천 데이터 생성 중...")
-    scored_df = score_stocks(final_df, '위험중립형')
-    recs_df = build_recommendations_df(scored_df, user_id=1, top_n=10)
+    # ─── STEP 7 & 8: 유저별 (F) 추천 및 (G) 뉴스레터 생성 ───
+    logger.info("[추천/뉴스레터] 구독 유저별 데이터 생성 중...")
+    all_recs = []
+    all_newsletters = []
+    
+    # 기본값 (DB 파일이 없거나 비구독자만 있을 때 실패 방지용)
+    users_to_process = [{'user_id': 1, 'type_name': '위험중립형', 'user_check': 1}]
+    
+    # user_type_db.csv 에서 구독자(user_check=1) 불러오기
+    import os
+    type_db_path = os.path.join('data', 'user_type_db.csv')
+    if os.path.exists(type_db_path):
+        try:
+            tdf = pd.read_csv(type_db_path)
+            # 구독한 유저만 필터링 (컬럼이 존재하는지 확인)
+            if 'user_check' in tdf.columns:
+                subscribed = tdf[tdf['user_check'] == 1]
+                if not subscribed.empty:
+                    users_to_process = subscribed.to_dict('records')
+        except Exception as e:
+            logger.warning(f"user_type_db.csv 읽기 실패, 기본값 사용: {e}")
 
-    # ─── STEP 8: (G) 뉴스레터 생성 ───
-    logger.info("[뉴스레터] 뉴스레터 생성 중...")
-    newsletter = generate_newsletter(
-        stock_df=final_df,
-        scored_df=scored_df,
-        signals_df=signals_df,
-        investor_type='위험중립형',
-        user_id=1,
-        news_df=news_df,
-    )
+    for u in users_to_process:
+        uid = u.get('user_id', 1)
+        utype = u.get('type_name', '위험중립형')
+        
+        # 7. 추천 데이터 생성
+        scored_df = score_stocks(final_df, utype)
+        recs_df = build_recommendations_df(scored_df, user_id=uid, top_n=10)
+        all_recs.append(recs_df)
+        
+        # 8. 뉴스레터 생성
+        newsletter = generate_newsletter(
+            stock_df=final_df,
+            scored_df=scored_df,
+            signals_df=signals_df,
+            investor_type=utype,
+            user_id=uid,
+            news_df=news_df,
+        )
+        newsletter['type_id'] = u.get('type_id', 3)
+        all_newsletters.append(newsletter)
+
+    final_recs_df = pd.concat(all_recs, ignore_index=True) if all_recs else pd.DataFrame()
 
     # ─── STEP 9: 전체 저장 (C~G) CSV ───
     logger.info("[저장] 전체 데이터 CSV 파일로 저장 중...")
@@ -843,13 +910,12 @@ def run_full_pipeline(kospi_limit=100, kosdaq_limit=100):
     save_all_to_csv(
         stock_df=final_df,
         signals_df=signals_df,
-        recs_df=recs_df,
-        newsletter_dict=newsletter,
+        recs_df=final_recs_df,
+        newsletter_dict=all_newsletters, # 리스트로 전달됨
     )
 
     # 기존 CSV도 저장 (호환성 유지)
     # db_manager의 save_to_csv 대신 간단한 로컬 구문 사용 또는 기본 저장
-    import os
     os.makedirs('data', exist_ok=True)
     final_df.to_csv(f"data/stock_data_{today}.csv", index=False, encoding='utf-8-sig')
     volume_df.to_csv(f"data/top_volume_{today}.csv", index=False, encoding='utf-8-sig')
@@ -857,6 +923,9 @@ def run_full_pipeline(kospi_limit=100, kosdaq_limit=100):
         news_df.to_csv(f"data/stock_news_{today}.csv", index=False, encoding='utf-8-sig')
     if not historical_df.empty:
         historical_df.to_csv(f"data/historical_{today}.csv", index=False, encoding='utf-8-sig')
+
+    # 구식 데이터 정리
+    cleanup_old_files('data')
 
 
     # ─── 결과 요약 ───

@@ -12,11 +12,12 @@ pymysql.install_as_MySQLdb()
 today_str = datetime.now().strftime("%Y%m%d")
 
 # 파일명 생성
-#file_name = f"newsletters_{today_str}.csv"
-file_name = f"newsletters_20260224.csv" #임시 테스트
+file_name = f"newsletters_{today_str}.csv"
 csv_file_path = f"data/{file_name}"
 df = pd.read_csv(csv_file_path, encoding="utf-8")
-newsletters_df = df[["user_id","type_id" ,"created_at", "title","content"]].copy()
+
+# type_id가 포함된 컬럼 목록 사용
+newsletters_df = df[["user_id", "type_id", "created_at", "title", "content"]].copy()
 
 newsletters_df["user_id"] = newsletters_df["user_id"].astype(str)
 

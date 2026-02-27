@@ -1,3 +1,1604 @@
 {
-    "analysis_signals": []
+    "analysis_signals": [
+        {
+            "ticker": "252670",
+            "종목명": "KODEX 200선물인버스2X",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 24.94,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "004410",
+            "종목명": "서울식품",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 73.89,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "114800",
+            "종목명": "KODEX 인버스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 46.49,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "004060",
+            "종목명": "SG세계물산",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 73.4,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "006340",
+            "종목명": "대원전선",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 92.62,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "007460",
+            "종목명": "에이프로젠",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 100.0,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "152550",
+            "종목명": "한국ANKOR유전",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 77.59,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "092220",
+            "종목명": "KEC",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 99.97,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "462330",
+            "종목명": "KODEX 2차전지산업레버리지",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 69.59,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "003060",
+            "종목명": "에이프로젠바이오로직스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 73.88,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "233740",
+            "종목명": "KODEX 코스닥150레버리지",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 49.2,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "452260",
+            "종목명": "한화갤러리아",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 70.35,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "251340",
+            "종목명": "KODEX 코스닥150선물인버스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 63.39,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "034830",
+            "종목명": "한국토지신탁",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 80.34,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "088350",
+            "종목명": "한화생명",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 40.29,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "252710",
+            "종목명": "TIGER 200선물인버스2X",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 60.7,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "001510",
+            "종목명": "SK증권",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 52.91,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "229200",
+            "종목명": "KODEX 코스닥150",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 48.59,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "005930",
+            "종목명": "삼성전자",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 66.21,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "018880",
+            "종목명": "한온시스템",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 47.21,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "118000",
+            "종목명": "메타케어",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 89.47,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "122630",
+            "종목명": "KODEX 레버리지",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 51.13,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "530036",
+            "종목명": "삼성 인버스 2X WTI원유 선물 ETN",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 46.07,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "047040",
+            "종목명": "대우건설",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 52.8,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "015260",
+            "종목명": "에이엔피",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 63.35,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "412570",
+            "종목명": "TIGER 2차전지TOP10레버리지",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 70.35,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "530107",
+            "종목명": "삼성 인버스 2X 코스닥150 선물 ETN",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 47.06,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "069500",
+            "종목명": "KODEX 200",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 49.54,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "500027",
+            "종목명": "신한 인버스 2X WTI원유 선물 ETN(H)",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 68.74,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "396500",
+            "종목명": "TIGER 반도체TOP10",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 65.85,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "003280",
+            "종목명": "흥아해운",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 62.98,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "003530",
+            "종목명": "한화투자증권",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 45.92,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "003000",
+            "종목명": "부광약품",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 69.09,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "006200",
+            "종목명": "한국전자홀딩스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 99.94,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "001740",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 52.96,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "144600",
+            "종목명": "KODEX 은선물(H)",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 64.87,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "102970",
+            "종목명": "KODEX 증권",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 61.99,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "123890",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 66.4,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "305720",
+            "종목명": "KODEX 2차전지산업",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 65.88,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "011930",
+            "종목명": "신성이엔지",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 64.54,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "009460",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 87.04,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "012800",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 81.37,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "123310",
+            "종목명": "TIGER 인버스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 58.87,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "001210",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 60.29,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "005440",
+            "종목명": "현대지에프홀딩스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 53.12,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "498400",
+            "종목명": "KODEX 200타겟위클리커버드콜",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 59.3,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "006800",
+            "종목명": "미래에셋증권",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 40.81,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "329200",
+            "종목명": "TIGER 리츠부동산인프라",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 41.59,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "000400",
+            "종목명": "롯데손해보험",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 48.92,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "034220",
+            "종목명": "LG디스플레이",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 73.03,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "489790",
+            "종목명": "한화비전",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 92.58,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "520057",
+            "종목명": "미래에셋 인버스 2X 코스닥150 선물 ETN",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 39.0,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "487240",
+            "종목명": "KODEX AI전력핵심설비",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 40.91,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "002630",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 40.22,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "006345",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 51.09,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "0148J0",
+            "종목명": "TIGER 코리아휴머노이드로봇산업",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 74.43,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "462010",
+            "종목명": "TIGER 2차전지소재Fn",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 57.6,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "379800",
+            "종목명": "KODEX 미국S&P500",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 55.44,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "395160",
+            "종목명": "KODEX AI반도체",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 57.14,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "011500",
+            "종목명": "한농화성",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 63.43,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "550043",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 59.13,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "0117V0",
+            "종목명": "TIGER 코리아AI전력기기TOP3플러스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 55.15,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "360750",
+            "종목명": "TIGER 미국S&P500",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 54.15,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "157500",
+            "종목명": "TIGER 증권",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 68.15,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "102110",
+            "종목명": "TIGER 200",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 39.19,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "012030",
+            "종목명": "DB",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 34.61,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "001440",
+            "종목명": "대한전선",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 52.87,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "001620",
+            "종목명": "케이비아이동국실업",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 43.75,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "085620",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 48.02,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "0091P0",
+            "종목명": "TIGER 코리아원자력",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 53.5,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "161510",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 51.9,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "364980",
+            "종목명": "TIGER 2차전지TOP10",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 55.76,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "232080",
+            "종목명": "TIGER 코스닥150",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 53.33,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "010820",
+            "종목명": "퍼스텍",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 52.3,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "379810",
+            "종목명": "KODEX 미국나스닥100",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 36.74,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "069460",
+            "종목명": "대호에이엘",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 69.61,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "472150",
+            "종목명": "TIGER 배당커버드콜액티브",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 53.09,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "000370",
+            "종목명": "한화손해보험",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 48.07,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "011300",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 62.83,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "005935",
+            "종목명": "삼성전자우",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 53.54,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "488080",
+            "종목명": "TIGER 반도체TOP10레버리지",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 55.24,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "0072R0",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 35.52,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "009830",
+            "종목명": "한화솔루션",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 34.81,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "411060",
+            "종목명": "ACE KRX금현물",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 51.58,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "001200",
+            "종목명": "유진투자증권",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 32.79,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "005880",
+            "종목명": "대한해운",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 35.76,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "395270",
+            "종목명": "HANARO Fn K-반도체",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 36.76,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "228790",
+            "종목명": "TIGER 화장품",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 50.89,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "009290",
+            "종목명": "광동제약",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 29.43,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "495050",
+            "종목명": "RISE 코리아밸류업",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 35.72,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "034020",
+            "종목명": "두산에너빌리티",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 34.01,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "008930",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 70.47,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "000660",
+            "종목명": "SK하이닉스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 53.74,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "091160",
+            "종목명": "KODEX 반도체",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 36.52,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "011000",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 53.22,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "292150",
+            "종목명": "TIGER 코리아TOP10",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 36.09,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "031820",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 65.67,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "0053L0",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 47.27,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "498410",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 32.04,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "448330",
+            "종목명": "KODEX 삼성전자채권혼합",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 50.48,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "032820",
+            "종목명": "우리기술",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 80.35,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "083640",
+            "종목명": "인콘",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 61.57,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "222080",
+            "종목명": "씨아이에스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 60.18,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "024840",
+            "종목명": "KBI메탈",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 59.8,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "054220",
+            "종목명": "비츠로시스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 89.95,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "076610",
+            "종목명": "해성옵틱스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 70.03,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "048410",
+            "종목명": "현대바이오",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 88.74,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "357880",
+            "종목명": "SKAI",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 83.52,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "010170",
+            "종목명": "대한광통신",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 44.5,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "090710",
+            "종목명": "휴림로봇",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 49.95,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "270520",
+            "종목명": "앱튼",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 77.63,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "024060",
+            "종목명": "흥구석유",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 48.15,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "092040",
+            "종목명": "아미코젠",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 67.23,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "900300",
+            "종목명": "오가닉티코스메틱",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 73.03,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "036170",
+            "종목명": "에이치엠넥스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 81.93,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "035810",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 55.43,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "038530",
+            "종목명": "케이바이오",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 53.83,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "306620",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 67.1,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "290660",
+            "종목명": "네오펙트",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 98.97,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "267320",
+            "종목명": "나인테크",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 50.33,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "319400",
+            "종목명": "현대무벡스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 77.75,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "078590",
+            "종목명": "휴림에이텍",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 59.38,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "079190",
+            "종목명": "케스피온",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 74.0,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "187660",
+            "종목명": "현대ADM",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 73.65,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "125020",
+            "종목명": "티씨머티리얼즈",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 47.3,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "417840",
+            "종목명": "저스템",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 84.28,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "321370",
+            "종목명": "센서뷰",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 69.92,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "388050",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 63.18,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "016600",
+            "종목명": "큐캐피탈",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 60.11,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "109960",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 66.97,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "006910",
+            "종목명": "보성파워텍",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 38.78,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "036540",
+            "종목명": "SFA반도체",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 44.05,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "033230",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 50.95,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "229000",
+            "종목명": "젠큐릭스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 68.08,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "290550",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 43.98,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "377030",
+            "종목명": "비트맥스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 36.63,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "476060",
+            "종목명": "온코닉테라퓨틱스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 76.49,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "032680",
+            "종목명": "소프트센",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 67.41,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "246690",
+            "종목명": "TS인베스트먼트",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 40.65,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "038880",
+            "종목명": "아이에이",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 68.72,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "103840",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 64.54,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "253590",
+            "종목명": "네오셈",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 44.65,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "147830",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 76.56,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "221800",
+            "종목명": "유투바이오",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 63.36,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "056090",
+            "종목명": "시지메드텍",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 52.57,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "067390",
+            "종목명": "아스트",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 38.55,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "412350",
+            "종목명": "레이저쎌",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 80.7,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "403870",
+            "종목명": "HPSP",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 48.58,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "018000",
+            "종목명": "유니슨",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 75.2,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "288980",
+            "종목명": "모아데이타",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 80.56,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "068240",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 49.73,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "035620",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 74.82,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "038500",
+            "종목명": "삼표시멘트",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 70.16,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "208370",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 47.38,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "065170",
+            "종목명": "비엘팜텍",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 32.82,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "255220",
+            "종목명": "SG",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 50.64,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "417200",
+            "종목명": "LS머트리얼즈",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 71.84,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "241520",
+            "종목명": "DSC인베스트먼트",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 37.35,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "373200",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 80.56,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "254490",
+            "종목명": "미래반도체",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 77.44,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "080220",
+            "종목명": "제주반도체",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 52.38,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "227950",
+            "종목명": "엔투텍",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 62.44,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "304840",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 71.16,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "206650",
+            "종목명": "유바이오로직스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 61.9,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "065500",
+            "종목명": "오리엔트정공",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 41.83,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "131400",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 64.3,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "049080",
+            "종목명": "기가레인",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 68.94,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "328380",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 62.27,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "049630",
+            "종목명": "재영솔루텍",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 50.3,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "039860",
+            "종목명": "나노엔텍",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 55.38,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "131180",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 59.71,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "220260",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 75.54,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "396300",
+            "종목명": "세아메카닉스",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 77.23,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "050890",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 47.22,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "033340",
+            "종목명": "좋은사람들",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 56.28,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "363260",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 42.93,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "008290",
+            "종목명": "원풍물산",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 59.93,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "066360",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 32.31,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "225430",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 45.45,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "003380",
+            "종목명": "하림지주",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 34.11,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "027710",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 49.06,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "046890",
+            "종목명": "서울반도체",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 69.14,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "307180",
+            "종목명": "아이엘",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 45.92,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "293580",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 52.03,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "289080",
+            "종목명": "SV인베스트먼트",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 52.1,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "417010",
+            "종목명": "나노팀",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 67.51,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "046120",
+            "종목명": "오르비텍",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 46.27,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "036120",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 65.72,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "900070",
+            "종목명": "글로벌에스엠",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 45.11,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "0001A0",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 51.48,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "242040",
+            "종목명": "나무기술",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 48.8,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "069540",
+            "종목명": "빛과전자",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 46.91,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "340930",
+            "종목명": "유일에너테크",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 55.08,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "077360",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 53.0,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "083660",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 57.9,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "067310",
+            "종목명": "하나마이크론",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 36.02,
+            "signal": "SELL"
+        },
+        {
+            "ticker": "317240",
+            "종목명": "TS트릴리온",
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 62.13,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "096350",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 61.52,
+            "signal": "BUY"
+        },
+        {
+            "ticker": "054210",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 59.17,
+            "signal": "HOLD"
+        },
+        {
+            "ticker": "252990",
+            "종목명": null,
+            "as_of": "2026-02-24 15:01:16",
+            "window": "1D",
+            "trend_score": 70.57,
+            "signal": "BUY"
+        }
+    ]
 }

@@ -1,12 +1,14 @@
 from common import export_table_to_json
+import os
 
 ENGINE_URL = "mysql+pymysql://test:test@25.4.53.12:3306/stock_db?charset=utf8mb4"
 
 TABLE_NAME = "newsletters"
 ROOT_KEY = "newsletters"
-OUTPUT_PATH = "out_data/newsletters_export.json"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUTPUT_PATH = os.path.join(BASE_DIR, "out_data", "newsletters_export.json")
 
-COLUMNS = ["id", "user_id", "created_at", "title", "content"]
+COLUMNS = ["user_id", "type_id", "created_at", "title", "content"]
 
 
 def main():
@@ -17,7 +19,7 @@ def main():
         output_path=OUTPUT_PATH,
         columns=COLUMNS,
     )
-    print(f"✅ newsletters export 완료: {OUTPUT_PATH}")
+    print(f"[Success] newsletters export completed: {OUTPUT_PATH}")
 
 if __name__ == "__main__":
     main()

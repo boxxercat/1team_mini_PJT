@@ -15,7 +15,13 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# 글로벌 카운터 (1시간마다 실행되므로 24가 되면 1일)
+hourly_run_count = 0
+
 def job_realtime_market_data():
+    global hourly_run_count
+    hourly_run_count += 1
+    
     """매 정시 전체 파이프라인(스크래핑 -> JSON 저장 -> DB C~G 갱신)을 실행합니다."""
     logger.info("=== [스케줄링] 1시간 단위 주식 시세 전체 수집 및 DB 동기화 파이프라인 시작 ===")
     try:
@@ -30,7 +36,9 @@ def job_realtime_market_data():
             'D_price_snapshots_table.py',
             'E_analysis_signals.py',
             'F_recommendations.py',
-            'G_newsletters.py'
+            'G_newsletters.py',
+            'H_stock_fundamentals.py',
+            'I_investor_trends.py'
         ]
         
         script_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'database_script')
@@ -48,6 +56,27 @@ def job_realtime_market_data():
             else:
                 logger.warning(f" -> 경고: {script_path} 파일을 찾을 수 없습니다.")
                 
+        # 3. 하루 간격 (24번 카운트) 달성 시 또는 오전 9시 정각일 때 이메일 뉴스레터 발송
+        current_hour = datetime.now().hour
+        if hourly_run_count >= 24 or current_hour == 9:
+            logger.info(f"=== ⏰ 이벤트 트리거 (카운트: {hourly_run_count}, 현재시각: {current_hour}시): 일간 뉴스레터 이메일 발송 시작 ===")
+            
+            mailer_res = subprocess.run(
+                ['python', '-m', 'mailer.send_newsletters'], 
+                capture_output=True, 
+                text=True, 
+                cwd=os.path.dirname(os.path.abspath(__file__))
+            )
+            
+            if mailer_res.returncode == 0:
+                logger.info("    [성공] 뉴스레터 이메일 발송 완료")
+            else:
+                logger.error(f"    [실패] 뉴스레터 이메일 발송 오류\nError: {mailer_res.stderr}")
+                logger.error(f"          Output: {mailer_res.stdout}")
+            
+            # 발송 후 카운트 초기화
+            hourly_run_count = 0
+
         logger.info("=== [완료] 전체 파이프라인 스케줄링 정상 종료 ===")
         
     except Exception as e:
@@ -56,16 +85,16 @@ def job_realtime_market_data():
 
 if __name__ == "__main__":
     logger.info("=== 백그라운드 스케줄러를 시작합니다 ===")
-    logger.info("주식 시세 수집: 평일(월-금) 09:00 ~ 15:00 매 정시 동작")
+    logger.info("주식 시세 수집: 24시간 매 정시 동작 (1시간 간격)")
     
     scheduler = BackgroundScheduler(timezone='Asia/Seoul')
     
-    # 평일 오전 9시부터 오후 3시까지 정각에 실행
+    # 1시간 스케줄링 카운트를 위해 매 정각마다 실행
     scheduler.add_job(
         job_realtime_market_data,
         'cron',
-        day_of_week='mon-fri',
-        hour='9-15',
+        day_of_week='mon-sun',
+        hour='*',
         minute=0,
         id='realtime_market_job'
     )

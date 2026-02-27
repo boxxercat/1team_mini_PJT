@@ -21,7 +21,7 @@ stocks_df = df[["종목코드", "종목명", "시장"]].copy()
 stocks_df.rename(columns={
     "종목코드": "ticker",
     "종목명": "name",
-    "시장": "market"
+    "시장": "market",
 }, inplace=True)
 
 stocks_df["ticker"] = stocks_df["ticker"].astype(str)

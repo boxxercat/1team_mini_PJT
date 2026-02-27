@@ -385,22 +385,25 @@ def score_stocks(df, investor_type):
         for metric, weight in top_metrics:
             if metric in score_data.index:
                 val = score_data[metric]
-                if val >= 70:
+                if val >= 65: # Changed from 70 to 65 for richer reasons
                     metric_names = {
-                        '배당수익률': '높은 배당수익률',
-                        '시가총액_순위': '대형 우량주',
-                        '변동폭_역순위': '낮은 변동성',
-                        '변동폭_순위': '높은 변동성(기회)',
-                        'PBR_역순위': '저평가(PBR)',
-                        '기관_순매수': '기관 순매수 양호',
-                        '외국인_순매수': '외국인 순매수 양호',
-                        'PER_적정': '적정 PER',
-                        '거래량_순위': '높은 거래량',
-                        '등락률_절대값': '높은 등락률',
+                        '배당수익률': '안정적인 배당 매력 부각',
+                        '시가총액_순위': '우수한 펀더멘털 기반 안정성',
+                        '변동폭_역순위': '견조한 하방 경직성 확보',
+                        '변동폭_순위': '단기 변동성 확대를 통한 모멘텀 부각',
+                        'PBR_역순위': '자산가치 대비 저평가 밸류에이션',
+                        '기관_순매수': '메이저 기관 수급 집중',
+                        '외국인_순매수': '외국인 투심 개선 및 견조한 순매수',
+                        'PER_적정': '실적 감안 시 합리적 밸류에이션',
+                        '거래량_순위': '유의미한 거래대금 동반',
+                        '등락률_절대값': '강력한 시세 탄력성',
                     }
                     parts.append(metric_names.get(metric, metric))
 
-        return ' + '.join(parts) if parts else '종합 분석 추천'
+        if not parts:
+            return '종합 퀀트 지표 양호 및 시장 트렌드 부합'
+            
+        return ', '.join(parts) + ' 측면에서 긍정적 시그널 포착'
 
     result['추천이유'] = [make_reason(result.iloc[i], result.index[i])
                         for i in range(len(result))]

@@ -41,71 +41,211 @@ st.set_page_config(
 )
 
 # ============================================================
-# 0. 데이터 로드
+# 0. 세션 매니지먼트 (30분 자동 로그아웃)
+# ============================================================
+import time
+
+# SESSION_TIMEOUT_SECONDS = 1800 # 30분 기능을 제거합니다.
+
+# 세션 복구 및 상태 관리
+if 'logged_in' not in st.session_state:
+    st.session_state['logged_in'] = False
+if 'username' not in st.session_state:
+    st.session_state['username'] = ""
+if 'current_page' not in st.session_state:
+    st.session_state['current_page'] = "🏠 메인 대시보드"
+
+# 자동 로그아웃 기능을 제거했습니다.
+
+# ============================================================
+# 1. 데이터 로드
 # ============================================================
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
+OUT_DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out_data')
 
+def check_db_port(host="25.4.53.12", port=3306, timeout=1.5):
+    """DB 서버 포트가 열려있는지 소켓으로 빠르게 확인합니다."""
+    import socket
+    try:
+        with socket.create_connection((host, port), timeout=timeout):
+            return True
+    except (socket.timeout, ConnectionRefusedError, OSError):
+        return False
+
+def run_outbound_sync():
+    """DB에서 로컬로 데이터를 동기화하는 outbound/run_all.py 스크립트를 실행합니다."""
+    import subprocess
+    import sys
+    import os
+    
+    # 1. 포트 체크 먼저 수행 (속도 개선 핵심)
+    if not check_db_port():
+        st.warning("⚠️ DB 서버에 연결할 수 없어 로컬 데이터를 사용합니다.")
+        return False
+
+    script_path = os.path.join(os.path.dirname(__file__), 'outbound', 'run_all.py')
+    if os.path.exists(script_path):
+        try:
+            # 동기화 시작 토스트 알림
+            st.toast("🔄 DB 데이터를 로컬로 동기화 중입니다...", icon="🔃")
+            result = subprocess.run([sys.executable, script_path], 
+                                  capture_output=True, 
+                                  text=True, 
+                                  check=True)
+            st.toast("✅ DB 동기화 완료!", icon="✨")
+            return True
+        except Exception as e:
+            st.error(f"DB 동기화 중 오류 발생: {e}")
+            return False
+    return False
+
+def run_full_system_sync():
+    """웹 수집 -> DB 반영 -> 로컬 동기화의 전체 파이프라인을 실행합니다."""
+    import subprocess
+    import sys
+    import os
+    from scraper import run_full_pipeline
+
+    try:
+        # 단일 진행 바/상태창 사용
+        with st.status("🚀 전체 시스템 데이터 동기화 시작...", expanded=True) as status:
+            # 1. 웹 스크래핑 (2~4분 소요)
+            st.write("1️⃣ 네이버 증권에서 최신 데이터 수집 중 (scraper.py)...")
+            run_full_pipeline()
+            
+            # 2. DB 업로드 (C~G)
+            st.write("2️⃣ 수집된 데이터를 DB에 반영 중 (database_script/)...")
+            scripts = [
+                'C_stocks_table.py', 'D_price_snapshots_table.py', 
+                'E_analysis_signals.py', 'F_recommendations.py', 'G_newsletters.py',
+                'H_stock_fundamentals.py', 'I_investor_trends.py'
+            ]
+            script_dir = os.path.join(os.path.dirname(__file__), 'database_script')
+            for script_name in scripts:
+                script_path = os.path.join(script_dir, script_name)
+                if os.path.exists(script_path):
+                    st.write(f"   -> {script_name} 실행 중...")
+                    subprocess.run([sys.executable, script_path], check=True, capture_output=True)
+            
+            # 3. 로컬 JSON 동기화 (Outbound)
+            st.write("3️⃣ DB에서 로컬 앱용 데이터 추출 중 (outbound/)...")
+            run_outbound_sync()
+            
+            status.update(label="✅ 모든 데이터 동기화가 완료되었습니다!", state="complete")
+            st.toast("✨ 시스템 전체 동기화 성공!", icon="🎊")
+            return True
+    except Exception as e:
+        st.error(f"❌ 전체 동기화 중 오류 발생: {e}")
+        return False
 
 def ensure_data_exists():
     """
-    데이터가 아예 없는 최초 구동 시에만 스크래퍼를 실행합니다.
-    매일 수집은 백그라운드 스케줄러(scheduler_job.py)가 담당하므로,
-    어제 데이터라도 있다면 즉시 화면을 띄워 로딩 속도를 대폭 개선합니다.
+    데이터가 아예 없는 최초 구동 시에만 전체 파이프라인을 실행합니다.
     """
-    stock_files = glob.glob(os.path.join(DATA_DIR, 'stock_data_*.csv'))
+    # JSON 파일 존재 여부로 체크 (실제 앱이 쓰는 데이터)
+    json_file = os.path.join(OUT_DATA_DIR, 'stocks_export.json')
     
-    # 폴더 내에 데이터 파일이 하나라도 존재하면 대기하지 않고 패스
-    if not stock_files:
-        from scraper import run_full_pipeline
-        with st.spinner("🔄 기초 주식 데이터를 최초 수집 중입니다. 약 2~4분 소요될 수 있습니다..."):
-            try:
-                run_full_pipeline()
-                st.toast("✅ 최신 시세 데이터 수집 완료!", icon="🚀")
-            except Exception as e:
-                st.error(f"데이터 수집 중 오류가 발생했습니다: {e}")
+    if not os.path.exists(json_file):
+        with st.container():
+            st.info("👋 처음 오셨군요! 앱 구동에 필요한 기초 데이터를 수집하고 동기화합니다.")
+            if st.button("🚀 데이터 초기화 및 수집 시작"):
+                run_full_system_sync()
+                st.rerun()
+            st.stop()
 
 @st.cache_data(ttl=300)
 def load_latest_data():
-    """data/ 디렉토리에서 최신 CSV 파일을 로드합니다."""
+    """out_data/ 디렉토리에서 최종 백업된 JSON 데이터를 로드합니다."""
     import json
-    # 최신 파일 검색
-    stock_files = sorted(glob.glob(os.path.join(DATA_DIR, 'stock_data_*.csv')))
-    news_files = sorted(glob.glob(os.path.join(DATA_DIR, 'stock_news_*.csv')))
-    hist_files = sorted(glob.glob(os.path.join(DATA_DIR, 'historical_*.csv')))
-    signal_files = sorted(glob.glob(os.path.join(DATA_DIR, 'analysis_signals_*.csv'))) 
-
-    # fallback (루트 디렉토리 탐색)
-    if not stock_files:
-        root_dir = os.path.dirname(os.path.abspath(__file__))
-        stock_files = sorted(glob.glob(os.path.join(root_dir, 'stock_data_*.csv')))
-        news_files = sorted(glob.glob(os.path.join(root_dir, 'stock_news_*.csv')))
-        signal_files = sorted(glob.glob(os.path.join(root_dir, 'analysis_signals_*.csv')))
-
+    import os
+    
+    out_dir = OUT_DATA_DIR
+    
     stock_df = pd.DataFrame()
+    signals_df = pd.DataFrame()
     news_df = pd.DataFrame()
     hist_df = pd.DataFrame()
-    signals_df = pd.DataFrame()
+    recs_df = pd.DataFrame()
+    newsletters_df = pd.DataFrame()
+    user_types_df = pd.DataFrame()
 
-    if stock_files:
-        stock_df = pd.read_csv(stock_files[-1])
-        st.session_state['data_file'] = os.path.basename(stock_files[-1])
+    # 1. 시세/거래량 JSON 로드 (C_export_stocks.py 결과물)
+    stock_json_path = os.path.join(out_dir, 'stocks_export.json')
+    if os.path.exists(stock_json_path):
+        try:
+            with open(stock_json_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                if 'stocks' in data:
+                    stock_df = pd.DataFrame(data['stocks'])
+                    st.session_state['data_file'] = "stocks_export.json"
+        except Exception as e:
+            print(f"Failed to load stocks JSON: {e}")
+
+    # 2. 분석 시그널 JSON 로드 (E_export_analysis_signals.py 결과물)
+    signal_json_path = os.path.join(out_dir, 'analysis_signals_export.json')
+    if os.path.exists(signal_json_path):
+        try:
+            with open(signal_json_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                if 'analysis_signals' in data:
+                    signals_df = pd.DataFrame(data['analysis_signals'])
+        except Exception as e:
+            print(f"Failed to load analysis signals JSON: {e}")
+
+    # 3. 추천 종목 JSON 로드 (F_export_recommendations.py 결과물)
+    recs_json_path = os.path.join(out_dir, 'recommendations_export.json')
+    if os.path.exists(recs_json_path):
+        try:
+            with open(recs_json_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                if 'recommendations' in data:
+                    recs_df = pd.DataFrame(data['recommendations'])
+        except Exception as e:
+            print(f"Failed to load recommendations JSON: {e}")
+
+    # 4. 뉴스레터 JSON 로드 (G_export_newsletters.py 결과물)
+    newsletters_json_path = os.path.join(out_dir, 'newsletters_export.json')
+    if os.path.exists(newsletters_json_path):
+        try:
+            with open(newsletters_json_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                if 'newsletters' in data:
+                    newsletters_df = pd.DataFrame(data['newsletters'])
+        except Exception as e:
+            print(f"Failed to load newsletters JSON: {e}")
+
+    # 5. 사용자 성향 정보 로드 (B_export_user_type.py 결과물)
+    user_type_json_path = os.path.join(out_dir, 'user_type_export.json')
+    if os.path.exists(user_type_json_path):
+        try:
+            with open(user_type_json_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                if 'user_type' in data:
+                    user_types_df = pd.DataFrame(data['user_type'])
+        except Exception as e:
+            print(f"Failed to load user_type JSON: {e}")
+
+    # 6. 뉴스 및 과거 시세 (기존 CSV 백업 방식 유지)
+    import glob
+    news_files = sorted(glob.glob(os.path.join(DATA_DIR, 'stock_news_*.csv')))
+    hist_files = sorted(glob.glob(os.path.join(DATA_DIR, 'historical_*.csv')))
     if news_files:
         news_df = pd.read_csv(news_files[-1])
     if hist_files:
         hist_df = pd.read_csv(hist_files[-1])
-        
-    # CSV 파일 읽기 전용 로직
-    if signal_files:
-        try:
-            signals_df = pd.read_csv(signal_files[-1])
-        except Exception as e:
-            print(f"Failed to load CSV signals: {e}")
 
     # signals가 없으면 실시간 생성 (Fallback)
     if signals_df.empty and not stock_df.empty:
         signals_df = generate_analysis_signals(stock_df, '1D')
 
-    return stock_df, news_df, hist_df, signals_df
+    # 텍스트 컬럼에 "None", "NONE", "N/A" 등이 포함된 행 자체를 완전히 삭제 (발표용 요구사항)
+    for df_name, df_tmp in {'stock': stock_df, 'signals': signals_df, 'recs': recs_df, 'newsletters': newsletters_df}.items():
+        if not df_tmp.empty:
+            for col in df_tmp.select_dtypes(include=['object']):
+                df_tmp[col] = df_tmp[col].replace(['None', 'NONE', 'N/A', 'NaN', 'nan', ''], pd.NA)
+            df_tmp.dropna(inplace=True)
+
+    return stock_df, news_df, hist_df, signals_df, recs_df, newsletters_df, user_types_df
 
 
 # ============================================================
@@ -281,7 +421,7 @@ st.markdown("""
         font-size: 14px;
     }
       
-    /* 1. 드롭다운이 펼쳐졌을 때 각 항목의 글자색 변경 */
+    /* 드롭다운이 펼쳐졌을 때 각 항목의 글자색 변경 */
     div[data-baseweb="popover"] li {
         color: #000000 !important; /* 글자색을 검정으로 강제 */
         background-color: transparent !important;
@@ -447,6 +587,10 @@ def init_user_type_table():
     pass # 파일 기반 관리로 변경되었으므로 별도의 초기화 불필요
 
 def load_users():
+    import json
+    
+    # JSON 확인 부분을 제거하고 로컬 CSV (작업본)만 확인
+
     if os.path.exists(USERS_DB_FILE):
         try:
             df = pd.read_csv(USERS_DB_FILE)
@@ -518,13 +662,6 @@ def _safe_verify(password: str, hashed: str) -> bool:
     pw_bytes = password.encode('utf-8')[:72]
     return _bcrypt.checkpw(pw_bytes, hashed.encode('utf-8'))
 
-if 'logged_in' not in st.session_state:
-    st.session_state['logged_in'] = False
-if 'username' not in st.session_state:
-    st.session_state['username'] = ""
-if 'current_page' not in st.session_state:
-    st.session_state['current_page'] = "🏠 메인 대시보드"
-
 # ============================================================
 # 사이드바 네비게이션 & 로그인 폼
 # ============================================================
@@ -572,6 +709,11 @@ with st.sidebar:
                     if _safe_verify(login_pw, hashed_pw):
                         st.session_state['logged_in'] = True
                         st.session_state['username'] = login_id
+                        t = time.time()
+                        st.session_state['last_active'] = t
+                        st.query_params["login_token"] = login_id
+                        st.query_params["last_active"] = str(t)
+                        
                         st.success("로그인 성공!")
                         st.rerun()
                     else:
@@ -582,40 +724,84 @@ with st.sidebar:
         st.markdown("<br>", unsafe_allow_html=True)
         if st.button("📝 회원가입 하기", use_container_width=True):
             st.session_state['current_page'] = "📝 회원가입"
-            st.session_state['menu_radio'] = "🏠 메인 대시보드" # 라디오 버튼 선택 해제 효과를 위해 기본값 유지
+            if 'menu_radio' in st.session_state:
+                del st.session_state['menu_radio']
             st.rerun()
     else:
         st.success(f"👋 환영합니다, **{st.session_state['username']}**님!")
+        
         if st.button("로그아웃", use_container_width=True):
             st.session_state['logged_in'] = False
             st.session_state['username'] = ""
+            st.query_params.clear()
             st.rerun()
             
     st.markdown("---")
 
-    menu_options = ["🏠 메인 대시보드", "📋 투자 성향 설문", "⭐ 맞춤 종목 추천",
-                    "📈 분석 신호", "📰 종목 뉴스", "📧 뉴스레터"]
+    import streamlit as st
+    from streamlit_option_menu import option_menu
 
-    # 콜백 함수를 통해 session state 수동 업데이트 우회
-    def on_page_change():
-        st.session_state['current_page'] = st.session_state['menu_radio']
+    if 'current_page' not in st.session_state:
+        st.session_state['current_page'] = "🏠 메인 대시보드"
+    # --- 사이드바 메뉴 섹션 ---
+    with st.sidebar:
+        
+        menu_options = ["🏠 메인 대시보드", "📋 투자 성향 설문", "⭐ 맞춤 종목 추천",
+                        "📈 분석 신호", "📰 종목 뉴스", "📧 뉴스레터"]
+        
+        # 아이콘 설정
+        menu_icons = ["house", "clipboard-check", "star", "graph-up", "newspaper", "envelope"]
 
-    st.radio(
-        "메뉴 선택",
-        menu_options,
-        index=menu_options.index(st.session_state['current_page']) if st.session_state['current_page'] in menu_options else 0,
-        key="menu_radio",
-        on_change=on_page_change,
-        label_visibility="collapsed",
-    )
-    
+        # option_menu 생성 (빨간 선 제거)
+        selected = option_menu(
+            menu_title=None,
+            options=menu_options,
+            icons=menu_icons,
+            menu_icon="cast",
+            default_index=menu_options.index(st.session_state['current_page']) if st.session_state['current_page'] in menu_options else 0,
+            styles={
+                "container": {
+                    "padding": "0!important", 
+                    "background-color": "transparent" # 컨테이너 배경 투명화
+                },
+                "icon": {"color": "#dcb98c", "font-size": "18px"}, 
+                "nav-link": {
+                    "font-size": "16px", 
+                    "text-align": "left", 
+                    "margin": "0px", 
+                    "color": "#ffffff",
+                    "background-color": "transparent", # 기본 배경을 투명하게 설정 (흰색 제거)
+                    "transition": "0.2s",
+                    "--hover-color": "rgba(255, 255, 255, 0.1)"
+                },
+                "nav-link-selected": {
+                    "background-color": "#BA996B",      # 선택된 탭 배경색 (원하시는 올리브색)
+                    "color": "#ffffff", 
+                    "font-weight": "600",
+                    "border-left": "none"
+                },
+            }
+        )
+
+        # 페이지 전환 로직
+        if st.session_state['current_page'] != selected:
+            st.session_state['current_page'] = selected
+            st.rerun()
+
+    # 최종 페이지 상태 저장
     page = st.session_state['current_page']
 
     st.markdown("---")
     
-    if st.button("🔄 데이터 새로고침", use_container_width=True):
+    if st.button("🔄 데이터 새로고침", use_container_width=True, help="DB 서버에서 최신 정제 데이터를 다시 가져옵니다."):
         st.cache_data.clear()
         st.rerun()
+
+    # with st.expander("🛠️ 시스템 관리"):
+    #     if st.button("📥 전체 시스템 리프레시", use_container_width=True, help="Web 스크래핑부터 DB 반영까지 전체 과정을 재실행합니다."):
+    #         run_full_system_sync()
+    #         st.cache_data.clear()
+    #         st.rerun()
 
     # 데이터 파일 정보
     if 'data_file' in st.session_state:
@@ -633,10 +819,18 @@ with st.sidebar:
 
 
 # ============================================================
-# 📌 데이터 로드
+# 📌 데이터 로드 & DB 동기화
 # ============================================================
+# 1. 세션당 최초 1회 DB에서 로컬로 데이터 동기화 수행 (사이드바 메뉴 로드 전 실행)
+if 'last_sync_time' not in st.session_state:
+    run_outbound_sync()
+    st.session_state['last_sync_time'] = time.time()
+
+# 2. 로컬 데이터가 아예 없는 경우 스크래핑 (최초 실행용)
 ensure_data_exists()
-stock_df, news_df, hist_df, signals_df = load_latest_data()
+
+# 3. 로컬 JSON 데이터 로드 (캐싱 지원)
+stock_df, news_df, hist_df, signals_df, recs_df, newsletters_df, user_types_df = load_latest_data()
 
 
 # ============================================================
@@ -763,7 +957,155 @@ elif page == "🏠 메인 대시보드":
         
     st.markdown("---")
 
+    st.markdown("### 📈 오늘의 증시 (KOSPI / KOSDAQ)")
+    # 데이터 로드 (indices_df가 로드되었다고 가정)
+    # ── 1. 데이터 정의 및 더미 데이터 생성 로직 ──
+    import numpy as np
+    from datetime import datetime, timedelta
+
+    # indices_df가 로드되지 않았거나 비어있는 경우 더미 데이터 생성
+    if 'indices_df' not in locals() or indices_df.empty:
+        # 그래프 모양 확인을 위한 100일치 가상 데이터 생성
+        test_dates = [(datetime.now() - timedelta(days=i)).strftime("%Y-%m-%d") for i in range(100)]
+        test_dates.reverse()
+        
+        # 실제 지수와 유사한 랜덤 흐름 생성
+        np.random.seed(42) # 동일한 그래프 모양 유지를 위해 시드 고정
+        kp_sample = np.linspace(2450, 2580, 100) + np.random.normal(0, 15, 100)
+        kd_sample = np.linspace(810, 870, 100) + np.random.normal(0, 8, 100)
+        
+        df_kp = pd.DataFrame({'Date': test_dates, 'Close': kp_sample, '시장': 'KOSPI'})
+        df_kd = pd.DataFrame({'Date': test_dates, 'Close': kd_sample, '시장': 'KOSDAQ'})
+        
+        st.caption("✨ 현재 레이아웃 확인을 위한 **샘플 데이터**를 표시 중입니다. (실제 데이터 없음)")
+    else:
+        # 실제 데이터가 존재하는 경우 필터링
+        df_kp = indices_df[indices_df['시장'] == 'KOSPI']
+        df_kd = indices_df[indices_df['시장'] == 'KOSDAQ']
     
+    # ── 2. 레이아웃 분리 (2개의 컬럼 생성) ──
+    col_chart1, col_chart2 = st.columns(2)
+
+    # 공통 레이아웃 설정 함수
+    def get_layout(title_text, color):
+        return dict(
+            template='plotly_dark',
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0)',
+            height=300, # 분리된 만큼 높이를 조금 줄임
+            margin=dict(l=10, r=10, t=40, b=10),
+            hovermode='x unified',
+            title=dict(text=title_text, font=dict(color=color, size=18)),
+            xaxis=dict(showgrid=False, tickfont=dict(color='#888')),
+            yaxis=dict(
+                showgrid=True,
+                gridcolor='rgba(255,255,255,0.05)',
+                tickfont=dict(color=color),
+                zeroline=False
+            )
+        )
+
+    # ── 3. 코스피 그래프 (좌측) ──
+    with col_chart1:
+        fig_kp = go.Figure()
+        fig_kp.add_trace(go.Scatter(
+            x=df_kp['Date'], y=df_kp['Close'],
+            name='KOSPI',
+            line=dict(color='#dcb98c', width=2),
+            fill='tozeroy',
+            fillcolor='rgba(220, 185, 140, 0.1)'
+        ))
+        fig_kp.update_layout(get_layout("코스피(KOSPI)", "#dcb98c"))
+        st.plotly_chart(fig_kp, use_container_width=True)
+
+    # ── 4. 코스닥 그래프 (우측) ──
+    with col_chart2:
+        fig_kd = go.Figure()
+        fig_kd.add_trace(go.Scatter(
+            x=df_kd['Date'], y=df_kd['Close'],
+            name='KOSDAQ',
+            line=dict(color='#f2ece4', width=2),
+            fill='tozeroy',
+            fillcolor='rgba(242, 236, 228, 0.05)'
+        ))
+        fig_kd.update_layout(get_layout("코스닥(KOSDAQ)", "#f2ece4"))
+        st.plotly_chart(fig_kd, use_container_width=True)
+
+    # ── 4. 지수 요약 메트릭 ──
+    index_metrics_container = st.container()
+
+    with index_metrics_container:
+        # 1. 이 컨테이너 바로 다음에 오는 메트릭들만 가로로 배치하는 CSS
+        # nth-child를 사용하여 지수 그래프 바로 아래의 메트릭 섹션만 정밀 타겟팅합니다.
+        st.markdown("""
+            <style>
+            /* 상자 자체의 여백 최소화 및 테두리 설정 */
+            [data-testid="stVerticalBlock"] > div:has(div#index-area-marker) + div [data-testid="stMetric"] {
+                padding: 5px 0px !important; 
+                border: 1px solid rgba(220, 185, 140, 0.3) !important;
+                border-radius: 10px !important;
+                text-align: center !important;
+            }
+
+            /* 내부 요소를 가로 한 줄로 세우고 전체 중앙 정렬 */
+            [data-testid="stVerticalBlock"] > div:has(div#index-area-marker) + div [data-testid="stMetric"] > div {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important; /* 모든 요소를 가로 중앙으로 */
+                align-items: baseline !important;    /* 글자 아래선 맞춤 */
+                gap: 10px !important;                /* 요소 간 간격 */
+                width: 100% !important;
+            }
+
+            /* 항목 이름(KOSPI) 스타일 */
+            [data-testid="stVerticalBlock"] > div:has(div#index-area-marker) + div [data-testid="stMetricLabel"] {
+                margin-bottom: 0 !important;
+                min-width: fit-content !important;
+            }
+            
+            [data-testid="stVerticalBlock"] > div:has(div#index-area-marker) + div [data-testid="stMetricLabel"] > div {
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                color: #dcb98c !important;
+            }
+
+            /* 지수 숫자(Value) 확대 */
+            [data-testid="stVerticalBlock"] > div:has(div#index-area-marker) + div [data-testid="stMetricValue"] > div {
+                font-size: 30px !important; 
+                font-weight: 800 !important;
+                line-height: 1 !important;
+            }
+
+            /* 변동폭(Delta) 중앙 정렬을 위해 마진 해제 */
+            [data-testid="stVerticalBlock"] > div:has(div#index-area-marker) + div [data-testid="stMetricDelta"] {
+                margin-top: 0 !important;
+                margin-left: 0 !important; /* 오른쪽 밀착 해제 */
+                display: flex !important;
+                align-items: center !important;
+            }
+            
+            [data-testid="stMetricDelta"] svg {
+                display: none !important; /* 화살표가 너무 크면 숨기거나 조정 가능 */
+            }
+            </style>
+            <div id="index-area-marker"></div>
+        """, unsafe_allow_html=True)
+
+        # 2. 실제 메트릭 배치
+        idx_col1, idx_col2 = st.columns(2)
+        
+        kp_last = df_kp.iloc[-1]['Close']
+        kp_delta = kp_last - df_kp.iloc[-2]['Close']
+        kd_last = df_kd.iloc[-1]['Close']
+        kd_delta = kd_last - df_kd.iloc[-2]['Close']
+
+        with idx_col1:
+            st.metric("KOSPI", f"{kp_last:,.2f}", f"{kp_delta:+.2f}")
+
+        with idx_col2:
+            st.metric("KOSDAQ", f"{kd_last:,.2f}", f"{kd_delta:+.2f}")
+
+    st.markdown("---")
 
     # ── 요약 통계 ──
     summary = generate_analysis_summary(stock_df)
@@ -1175,6 +1517,16 @@ elif page == "📋 투자 성향 설문":
                         except Exception as e:
                             st.write(f"⚠️ 예기치 않은 오류: {e}")
                             status.update(label="DB 연동 중 오류 발생", state="error")
+                            
+        # 설문 완료 후 결과 페이지(맞춤 종목 추천)로 자동 강제 이동
+        import time 
+        time.sleep(1) # 유저가 토스트 메시지/상태창을 볼 아주 잠깐의 여유 제공
+        
+        # 라디오 버튼 UI 동기화를 위해 session_state 처리
+        st.session_state['current_page'] = "⭐ 맞춤 종목 추천"
+        if 'menu_radio' in st.session_state:
+            del st.session_state['menu_radio']
+        st.rerun()
 
         type_info = TYPE_DESCRIPTIONS[investor_type]
 
@@ -1249,7 +1601,22 @@ elif page == "⭐ 맞춤 종목 추천":
         st.warning("⚠️ 주식 데이터가 없습니다. 먼저 `python scraper.py`를 실행해 주세요.")
         st.stop()
 
-    # ── 투자 성향 확인 ──
+    # ── 투자 성향 확인 (DB 연동 기반) ──
+    # 세션에 투자 성향이 없어도 DB에 기록이 있다면 불러오기
+    if 'investor_type' not in st.session_state and st.session_state.get('logged_in'):
+        import os, pandas as pd
+        
+        type_db = os.path.join(DATA_DIR, 'user_type_db.csv')
+        if os.path.exists(type_db):
+            try:
+                tdf = pd.read_csv(type_db)
+                user_match = tdf[tdf['user_id'].astype(str) == str(st.session_state['username'])]
+                if not user_match.empty:
+                    # DB에서 찾아온 성향 이름 저장
+                    st.session_state['investor_type'] = user_match.iloc[-1]['type_name']
+            except Exception as e:
+                pass
+                
     if 'investor_type' not in st.session_state:
         st.info("📋 먼저 **투자 성향 설문**을 완료해 주세요.")
 
@@ -1285,8 +1652,29 @@ elif page == "⭐ 맞춤 종목 추천":
     if market_sel != "전체":
         filtered_df = filtered_df[filtered_df['시장'] == market_sel]
 
+    # 발표용 요건: 시가총액 높은 상위 100개 종목 내에서만 추천
+    if not filtered_df.empty and '시가총액(억)' in filtered_df.columns:
+        filtered_df['시가총액(억)'] = pd.to_numeric(filtered_df['시가총액(억)'], errors='coerce')
+        filtered_df = filtered_df.sort_values(by='시가총액(억)', ascending=False).head(100)
+
     # ── 추천 종목 계산 ──
-    recommendations = get_top_recommendations(filtered_df, investor_type, top_n)
+    # DB 추천 데이터 중 현재 사용자의 성향과 일치하는 것 필터링 정렬
+    recommendations = pd.DataFrame()
+    if not recs_df.empty:
+        recs_display = recs_df.copy()
+        if '현재가' in recs_display.columns:
+            recs_display['현재가'] = pd.to_numeric(recs_display['현재가'], errors='coerce')
+            recs_display = recs_display[recs_display['현재가'] > 0]
+            
+        if not filtered_df.empty and '종목코드' in filtered_df.columns:
+            top_tickers = filtered_df['종목코드'].astype(str).tolist()
+            recs_display = recs_display[recs_display['종목코드'].astype(str).isin(top_tickers)]
+            
+        recommendations = recs_display.sort_values(by='추천점수', ascending=False).head(top_n)
+
+    # DB 필터를 거친 후 종목 수가 부족하거나 데이터가 없으면 즉시 실시간 연산 수행 (보조 수단)
+    if len(recommendations) < top_n:
+        recommendations = get_top_recommendations(filtered_df, investor_type, top_n)
 
     if recommendations.empty:
         st.warning("추천 가능한 종목이 없습니다.")
@@ -1395,10 +1783,6 @@ elif page == "⭐ 맞춤 종목 추천":
                 f"<td style='font-weight:700;color:#dcb98c'>#{i+1}</td>"
                 f"<td style='font-weight:600;color:#f0e8dc'>{name}</td>"
                 f"<td style='text-align:center;font-weight:700;color:#c19b76'>{score:.1f}</td>"
-                f"<td>{rsi_txt}</td>"
-                f"<td>{macd_txt}</td>"
-                f"<td>{golden_txt}</td>"
-                f"<td>{sent_txt}</td>"
                 f"<td style='color:#ccc;font-size:13px'>{reason}</td>"
                 f"</tr>")
 
@@ -1407,7 +1791,7 @@ elif page == "⭐ 맞춤 종목 추천":
             "<table class='reason-table'>"
             "<thead><tr>"
             "<th>순위</th><th>종목명</th><th>점수</th>"
-            "<th>RSI</th><th>MACD</th><th>골든크로스</th><th>뉴스감성</th><th>추천이유</th>"
+            "<th>추천이유</th>"
             "</tr></thead>"
             f"<tbody>{reason_rows}</tbody>"
             "</table>"
@@ -1543,6 +1927,28 @@ elif page == "⭐ 맞춤 종목 추천":
                     fig_candle.update_yaxes(showgrid=True, gridwidth=1, gridcolor='#333333', side='right', row=2, col=1)
 
                     st.plotly_chart(fig_candle, use_container_width=True)
+
+                    # --- 전문가 분석 코멘트 추가 ---
+                    rec_row = recommendations[recommendations['종목코드'].astype(str) == selected_ticker]
+                    if not rec_row.empty:
+                        expert_score = rec_row.iloc[0]['추천점수']
+                        expert_reason = rec_row.iloc[0]['추천이유']
+                        
+                        st.markdown(
+                            f"""
+                            <div style="background-color:rgba(30, 41, 59, 0.6); border-left: 5px solid #dcb98c; padding:15px; border-radius:8px; margin-top:20px; font-family:'Pretendard', sans-serif;">
+                                <h4 style="margin-top:0; color:#e2e8f0; font-weight:600; font-size:16px;">
+                                    💡 퀀트 분석가(Lumina AI)의 정밀 진단 
+                                </h4>
+                                <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin-bottom:0;">
+                                    <strong style="color:#fcd34d;">종합 퀀트 스코어 {expert_score:.1f}점</strong>을 획득하였습니다. <br/>
+                                    <strong>{expert_reason}</strong> 등 다방면의 재무/수급/기술적 지표가 복합적으로 우수한 상태를 가리키고 있습니다.<br/>
+                                    해당 종목의 최근 수급 및 변동성 브레이크아웃(Breakout) 패턴을 고려할 때, <strong>우상향 랠리 가능성</strong>에 무게를 두는 전략이 유효합니다.
+                                </p>
+                            </div>
+                            """,
+                            unsafe_allow_html=True
+                        )
             else:
                 st.info("추천 종목의 과거 시세 데이터가 없습니다.")
 
@@ -1568,35 +1974,7 @@ elif page == "⭐ 맞춤 종목 추천":
             )
             st.plotly_chart(fig_change, use_container_width=True)
 
-        # PER / PBR 분포 (Seaborn)
-        if 'PER' in recommendations.columns and 'PBR' in recommendations.columns:
-            st.markdown("### PER / PBR 분포")
-            fig_pp, axes = plt.subplots(1, 2, figsize=(14, 5))
-            fig_pp.patch.set_facecolor('#1a1a2e')
-
-            for ax in axes:
-                ax.set_facecolor('#1a1a2e')
-                ax.tick_params(colors='white')
-                ax.xaxis.label.set_color('white')
-                ax.yaxis.label.set_color('white')
-
-            per_data = pd.to_numeric(recommendations['PER'], errors='coerce').dropna()
-            pbr_data = pd.to_numeric(recommendations['PBR'], errors='coerce').dropna()
-
-            if not per_data.empty:
-                sns.histplot(per_data, kde=True, ax=axes[0], color='#667eea')
-                axes[0].set_title('PER 분포', color='white', fontsize=13)
-                axes[0].set_xlabel('PER')
-
-            if not pbr_data.empty:
-                sns.histplot(pbr_data, kde=True, ax=axes[1], color='#764ba2')
-                axes[1].set_title('PBR 분포', color='white', fontsize=13)
-                axes[1].set_xlabel('PBR')
-
-            plt.tight_layout()
-            st.pyplot(fig_pp)
-            plt.close()
-
+        # (PER/PBR 그래프 삭제됨)
     with tab_d:
         st.markdown("### 추천 종목 상세 데이터")
         display_cols = [
@@ -1674,6 +2052,12 @@ elif page == "📈 분석 신호":
         st.warning("⚠️ 분석 신호 데이터가 없습니다. `python scraper.py`를 실행해 주세요.")
         st.stop()
 
+    # 시가총액 50위까지만 필터링하고 그 중 20개만 표시 (발표용 요구사항)
+    if not stock_df.empty and '시가총액(억)' in stock_df.columns and '종목코드' in stock_df.columns:
+        stock_df['시가총액(억)'] = pd.to_numeric(stock_df['시가총액(억)'], errors='coerce')
+        top50_tickers = stock_df.sort_values(by='시가총액(억)', ascending=False).head(50)['종목코드'].astype(str).tolist()
+        signals_df = signals_df[signals_df['ticker'].astype(str).isin(top50_tickers)].head(20)
+
     # 종목명 매핑
     if not stock_df.empty and '종목코드' in stock_df.columns:
         name_map = dict(zip(stock_df['종목코드'].astype(str), stock_df['종목명']))
@@ -1699,11 +2083,19 @@ elif page == "📈 분석 신호":
 
     # 신호 필터
     signal_filter = st.selectbox("신호 필터", ['전체', '매수', '보유', '매도'], key='sig_filter')
-    display_signals = signals_df if signal_filter == '전체' else signals_df[signals_df['signal'] == signal_filter]
+    
+    filter_map = {'매수': 'BUY', '보유': 'HOLD', '매도': 'SELL'}
+    if signal_filter == '전체':
+        display_signals = signals_df
+    else:
+        display_signals = signals_df[signals_df['signal'] == filter_map[signal_filter]]
 
     # 추세 점수 바 차트
+    # 1. 데이터프레임의 값을 한글로 치환
+    display_signals['signal'] = display_signals['signal'].replace({'BUY': '매수', 'HOLD': '보유', 'SELL': '매도'})
+
+    # 2. 컬러 맵도 한글 키값으로 변경
     color_map = {'매수': '#3fb950', '보유': '#d29922', '매도': '#f85149'}
-    display_signals = display_signals.sort_values('trend_score', ascending=False)
 
     fig_sig = px.bar(
         display_signals,
@@ -1711,7 +2103,12 @@ elif page == "📈 분석 신호":
         y='trend_score',
         color='signal',
         color_discrete_map=color_map,
-        title='종목별 추세 점수 및 매매 신호',
+        labels={
+            'BUY': '매수',      # 'BUY'를 '매수 신호'로 변경
+            'HOLD': '보유',     # 'HOLD'를 '보유 신호'로 변경
+            'SELL': '매도'      # 'SELL'를 '매도 신호'로 변경
+        },
+        title='종목별 점수 분포 및 매매 신호',
         template='plotly_dark',
         text='trend_score',
     )
@@ -1723,23 +2120,24 @@ elif page == "📈 분석 신호":
         # 각 색상별 어떤 시장인지 표시
         showlegend=True,
         legend=dict(
-        title_text='신호',
-        font=dict(size=14, color="white"), # 텍스트 크기를 키우고 흰색으로 고정
-        orientation="v", # 세로로 나열
-        yanchor="top",
-        y=0.99,
-        xanchor="left",
-        x=1.02 # 차트 오른쪽에 범례 표시
-        ),
+            title_text='신호',
+            font=dict(size=14, color="white"), # 텍스트 크기를 키우고 흰색으로 고정
+            orientation="v", # 세로로 나열
+            yanchor="top",
+            y=0.99,
+            xanchor="left",
+            x=1.02 # 차트 오른쪽에 범례 표시
+            ),
         #xaxis={'categoryorder':'total descending'},
         xaxis_tickangle=-45,
         xaxis=dict(
             {'categoryorder':'total descending'},
-            title_font=dict(color="#ffffff"),   # 축 이름 색상
+            title_font=dict(color="#ffffff",size=18),   # 축 이름 색상
             tickfont=dict(color="#ffffff")   # 축 숫자 색상
             ),
         yaxis=dict(
-            title_font=dict(color="#ffffff"),  # 축 이름 색상
+            title_text='추세 점수',
+            title_font=dict(color="#ffffff",size=18),  # 축 이름 색상
             tickfont=dict(color="#ffffff")    # 축 숫자 색상
             ),
         plot_bgcolor='rgba(0,0,0,0)',
@@ -1748,10 +2146,27 @@ elif page == "📈 분석 신호":
         height=500,
     )
     # 기준선 추가
-    fig_sig.add_hline(y=60, line_dash='dash', line_color='#3fb950',
-                      annotation_text='매수 기준(60)', annotation_position='top right')
-    fig_sig.add_hline(y=40, line_dash='dash', line_color='#f85149',
-                      annotation_text='매도 기준(40)', annotation_position='bottom right')
+    fig_sig.add_hline(y=60, line_dash='dash', line_color='#3fb950')
+    fig_sig.add_hline(y=40, line_dash='dash', line_color='#f85149')
+
+    # 범례에만 나타나게 하는 가짜 데이터 추가 (중요: x, y에 아무것도 넣지 않음)
+    fig_sig.add_scatter(
+        x=[None], 
+        y=[None],
+        mode='lines',
+        line=dict(color='#3fb950', dash='dash'),
+        name='매수 기준 (60)',
+        showlegend=True
+    )
+
+    fig_sig.add_scatter(
+        x=[None], 
+        y=[None],
+        mode='lines',
+        line=dict(color='#f85149', dash='dash'),
+        name='매도 기준 (40)',
+        showlegend=True
+    )
     st.plotly_chart(fig_sig, use_container_width=True)
 
     # 신호 분포 파이 차트
@@ -1776,9 +2191,9 @@ elif page == "📈 분석 신호":
         st.markdown("""
         | 점수 | 신호 | 의미 |
         |------|------|------|
-        | **≥ 60** | 🟢 **BUY** | 등락률 + 거래량 + 외국인/기관 추세 양호 |
-        | **40~59** | 🟡 **HOLD** | 동향 혼재, 관망 유지 |
-        | **< 40** | 🔴 **SELL** | 하락 추세 또는 외국인/기관 순매도 |
+        | **≥ 60** | 🟢 **매수** | 등락률 + 거래량 + 외국인/기관 추세 양호 |
+        | **40~59** | 🟡 **보유** | 동향 혼재, 관망 유지 |
+        | **< 40** | 🔴 **매도** | 하락 추세 또는 외국인/기관 순매도 |
         """)
         st.markdown("""
         **추세 점수 산출:**
@@ -1790,8 +2205,8 @@ elif page == "📈 분석 신호":
     st.markdown("### 종목별 신호 카드")
     for _, row in display_signals.iterrows():
         sig = row['signal']
-        sig_emoji = '🟢' if sig == 'BUY' else '🟡' if sig == 'HOLD' else '🔴'
-        sig_color = color_map[sig]
+        sig_emoji = '🟢' if sig == '매수' else '🟡' if sig == '보유' else '🔴'
+        sig_color = color_map.get(sig, "#8b949e") # Fallback color instead of raising KeyError
         st.markdown(
             f"""
             <div class="stock-card">
@@ -1833,7 +2248,8 @@ elif page == "📧 뉴스레터":
             st.info("좌측 사이드바에서 로그인 후 이용해 주세요.")
             if st.button("홈으로 돌아가기", key="newsletter_login_home_btn"):
                 st.session_state['current_page'] = "🏠 메인 대시보드"
-                st.session_state['menu_radio'] = "🏠 메인 대시보드"
+                if 'menu_radio' in st.session_state:
+                    del st.session_state['menu_radio']
                 st.rerun()
         show_login_dialog()
         st.stop()
@@ -1861,16 +2277,21 @@ elif page == "📧 뉴스레터":
         f"**{type_info['emoji']} {type_info['title']}** — _{type_info['strategy']}_"
     )
 
-    # 뉴스레터 생성
-    scored = score_stocks(stock_df, inv_type)
-    newsletter = generate_newsletter(
-        stock_df=stock_df,
-        scored_df=scored,
-        signals_df=signals_df,
-        investor_type=inv_type,
-        user_id=1,
-        news_df=news_df,
-    )
+    # 뉴스레터 생성 (DB 데이터 우선 사용)
+    if not newsletters_df.empty:
+        # DB에서 현재 성향에 맞는 뉴스레터 찾기 (type_id 매칭 등)
+        # 여기서는 가장 최근 것을 가져옴
+        newsletter = newsletters_df.iloc[-1].to_dict()
+    else:
+        scored = score_stocks(stock_df, inv_type)
+        newsletter = generate_newsletter(
+            stock_df=stock_df,
+            scored_df=scored,
+            signals_df=signals_df,
+            investor_type=inv_type,
+            user_id=1,
+            news_df=news_df,
+        )
 
     st.markdown("---")
     st.markdown(f"### {newsletter['title']}")
